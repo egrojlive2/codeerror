@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+sudo su
+/etc/init.d/stunnel4 stop
+rm /etc/ssl/certs/stunnel.pem
+apt purge stunnel -y
+apt remove stunnel -y
+apt purge stunnel4 -y
+apt remove stunnel4 -y
+apt clean
+apt autoclean
+rm -r /etc/stunnel/
+apt update -y
+apt install stunnel
+apt install stunnel4 -y
+cd /etc/stunnel/
+openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 -sha256 -subj "/CN=127.0.0.1/O=localhost/C=US" -keyout /etc/stunnel/stunnel.pem -out /etc/stunnel/stunnel.pem
+echo 'client = no
+[ssh]
+cert = /etc/stunnel/stunnel.pem
+accept = 107
+connect = 127.0.0.1:22
+
+client = no
+[dropbear]
+cert = /etc/stunnel/stunnel.pem
+accept = 108
+connect = 127.0.0.1:443
+
+client = no
+[shadowsocks-libev]
+cert = /etc/stunnel/stunnel.pem
+accept = 109
+connect = 127.0.0.1:8887
+' > /etc/stunnel/stunnel.conf
+service stunnel4 restart
