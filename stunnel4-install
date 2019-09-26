@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+sudo su
 /etc/init.d/stunnel4 stop
 rm /etc/ssl/certs/stunnel.pem
 apt purge stunnel -y
