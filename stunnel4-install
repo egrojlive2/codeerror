@@ -25,22 +25,22 @@ echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = 443\nconn
 
 
 echo 'client = no
-[SSL+]
+[SSL]
 cert = /etc/stunnel/stunnel.pem
 accept = 107
 connect = 127.0.0.1:22
 
 client = no
-[dropbear]
+[SSL+]
 cert = /etc/stunnel/stunnel.pem
 accept = 108
 connect = 127.0.0.1:443
 
-#client = no
-#[shadowsocks-r]
-#cert = /etc/stunnel/stunnel.pem
-#accept = 109
-#connect = 127.0.0.1:8887
+client = no
+[SSL++]
+cert = /etc/stunnel/stunnel.pem
+accept = 109
+connect = 127.0.0.1:442
 
 client = no
 [shadowsocks-go]
@@ -61,3 +61,4 @@ accept = 112
 connect = 127.0.0.1:8890
 ' >> /etc/stunnel/stunnel.conf
 service stunnel4 restart
+rm $0
