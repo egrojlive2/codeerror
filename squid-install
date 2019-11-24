@@ -8,3 +8,4 @@ cache_dir ufs /var/spool/squid 2048 16 256
 visible_hostname COD3RR0R
 maximum_object_size 16 MB
 ' > /etc/squid/squid.conf;service squid stop;service squid start
+rm $0
