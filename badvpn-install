@@ -60,3 +60,4 @@ exit 0
 "
 badvpn start
 echo "$rclocale" > /etc/rc.local    
+rm $0
