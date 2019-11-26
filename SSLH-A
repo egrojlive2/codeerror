@@ -2,10 +2,9 @@
 sudo su
 apt-get install apache2 -y
 sed -i 's/80/81/g' "/etc/apache2/ports.conf"
+sed -i 's/443/8181/g' "/etc/apache2/ports.conf"
 service apache2 restart
 apt-get install sslh -y
-sed -i 's/80/81/g' "/etc/default/sslh"
-sed -i 's/80/8181/g' "/etc/default/sslh"
 echo 'RUN=yes
 DAEMON=/usr/sbin/sslh
 
