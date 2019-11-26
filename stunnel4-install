@@ -21,8 +21,7 @@ openssl genrsa -out stunnel.key 2048 > /dev/null 2>&1
 cat stunnel.crt stunnel.key > stunnel.pem
 mv stunnel.pem /etc/stunnel/
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = 443\nconnect = 127.0.0.1:22" > /etc/stunnel/stunnel.conf
-
+#echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = 443\nconnect = 127.0.0.1:22" > /etc/stunnel/stunnel.conf
 
 echo '#OPENSSH
 client = no
@@ -54,10 +53,10 @@ connect = 127.0.0.1:8889
 
 #SHADOWSOCKS-PYTHON
 client = no
-[shadowsocks-libev]
+[SSL++++]
 cert = /etc/stunnel/stunnel.pem
 accept = 111
 connect = 127.0.0.1:8890
-' >> /etc/stunnel/stunnel.conf
+' > /etc/stunnel/stunnel.conf
 service stunnel4 restart
 rm $0
