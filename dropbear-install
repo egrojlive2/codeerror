@@ -16,7 +16,7 @@ cat > /etc/default/dropbear<<-EOF
 NO_START=0
     
 # the TCP port that Dropbear listens on
-DROPBEAR_PORT=443
+DROPBEAR_PORT=666
 
 # any additional arguments for Dropbear
 DROPBEAR_EXTRA_ARGS=""
@@ -36,5 +36,5 @@ DROPBEAR_BANNER="/etc/issue.net"
 DROPBEAR_RECEIVE_WINDOW=65536
 EOF
 service dropbear restart
-echo "DROPBEAR INSTALADO EN PUERTO 443"
+echo "DROPBEAR INSTALADO EN PUERTO 666"
 rm $0
