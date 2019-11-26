@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+sudo su
+apt-get install apache2 -y
+sed -i 's/80/81/g' "/etc/apache2/ports.conf"
+service apache2 restart
+apt-get install sslh -y
+sed -i 's/80/81/g' "/etc/default/sslh"
+echo "RUN=yes
+DAEMON=/usr/sbin/sslh
+
+DAEMON_OPTS="--user sslh --listen 0.0.0.0:443 --ssh 127.0.0.1:22 --ssl 127.0.0.1:107 -http 127.0.0.1:80 --pidfile /var/run/sslh/sslh.pid"
+" > /etc/default/sslh
+service sslh restart
