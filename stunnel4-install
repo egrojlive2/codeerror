@@ -24,40 +24,39 @@ sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = 443\nconnect = 127.0.0.1:22" > /etc/stunnel/stunnel.conf
 
 
-echo 'client = no
+echo '#OPENSSH
+client = no
 [SSL]
 cert = /etc/stunnel/stunnel.pem
 accept = 107
 connect = 127.0.0.1:22
 
+#DROPBEAR
 client = no
 [SSL+]
 cert = /etc/stunnel/stunnel.pem
 accept = 108
-connect = 127.0.0.1:443
+connect = 127.0.0.1:666
 
+#SHADOWSOCKS-GO
 client = no
 [SSL++]
 cert = /etc/stunnel/stunnel.pem
 accept = 109
-connect = 127.0.0.1:442
-
-client = no
-[shadowsocks-go]
-cert = /etc/stunnel/stunnel.pem
-accept = 110
 connect = 127.0.0.1:8888
 
+#SHADOWSOCKS-LIBEV
+client = no
+[SSL+++]
+cert = /etc/stunnel/stunnel.pem
+accept = 110
+connect = 127.0.0.1:8889
+
+#SHADOWSOCKS-PYTHON
 client = no
 [shadowsocks-libev]
 cert = /etc/stunnel/stunnel.pem
 accept = 111
-connect = 127.0.0.1:8889
-
-client = no
-[shadowsocks-py]
-cert = /etc/stunnel/stunnel.pem
-accept = 112
 connect = 127.0.0.1:8890
 ' >> /etc/stunnel/stunnel.conf
 service stunnel4 restart
