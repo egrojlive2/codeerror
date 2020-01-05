@@ -17,6 +17,7 @@ killall badvpn-udpgw
 fi" > /bin/badvpn
 chmod +x /bin/badvpn
 if [ -f /usr/local/bin/badvpn-udpgw ]; then
+badvpn start
 echo -e "\033[1;32mBadvpn ya esta instalado\033[0m"
 exit
 else
