@@ -36,6 +36,7 @@ function addip {
    printf "por favor ingresa una ip valida"
    else
    ufw allow from $ip
+   ufw reload
    fi
 }
 
@@ -47,6 +48,7 @@ read -p "escribe la ip a eliminar : " ip
    printf "por favor ingresa una ip valida"
    else
    ufw delete allow from $ip
+   ufw reload
    fi
 }
 logo
