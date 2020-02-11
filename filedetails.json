@@ -1,0 +1,48 @@
+{
+  "ovpn_file":[
+    {"id":0,"file":"client dev tun proto udp ... d4ec4105a39c814bd980c9c0e0b8efb4 -----END OpenVPN Static key V1----- </tls-auth>"},
+    {"id":1,"file":""}
+    {"id":2,"file":"client
+dev tun
+proto tcp
+sndbuf 0
+rcvbuf 0
+remote 157.245.171.62 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tls server
+auth SHA512
+cipher AES-256-CBC
+setenv opt block-outside-dns
+key-direction 1
+verb 3
+<ca>
+</ca>
+<cert>
+</cert>
+<key>
+</key>
+<tls-auth>
+-----BEGIN OpenVPN Static key V1-----
+cec8004087657562b76232a883cbf9c5
+a41d9b58d777ed2c8d76420f3ee4267d
+c43e3322e2645d8cba34f1f84be19cd7
+dcd03536729ea162d88901e01558348b
+b9ab3b55cfeeece5d59c52108880755e
+9f444fbf3cda3304f749d790ff059164
+4c010f621d994d736f065f49b7fb78f7
+f709db43443146126c7db0205832f709
+56c92c557155c21e37fc3d41d043addd
+405aca8ece9f3b551aafaaaa13f63ca2
+211c2c550bfab961e6534303845e3734
+de41f220ef2c13319e2a5b7d9dbe2ff1
+ece86d0209bc911badcf5b1e79b6d4df
+99db5a40d795d2b2cdcb92e129227dcd
+4ea331a86c6f8d133020cbc9d4c03957
+fcfec6ff97d6480b61b5db3268a0f3d1
+-----END OpenVPN Static key V1-----
+</tls-auth>"}
+    ]
+}
