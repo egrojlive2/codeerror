@@ -106,9 +106,9 @@ CLIENT='client'
 if [[ "$OS" = 'debian' ]]; then
 
 
-apt-get update -qq
+apt-get update -qq -y
 apt-get install openvpn iptables openssl -y -qq
-apt-get install build-essential libssl-dev liblzo2-dev libpam0g-dev easy-rsa
+apt-get install build-essential libssl-dev liblzo2-dev libpam0g-dev easy-rsa -y
 ovpnversion=$(openvpn --status-version | grep -o "([0-9].*)" | sed 's/[^0-9.]//g')
 if version_gt $ovpnversion "2.3.3"; then
 echo "Your OpenVPN version is $ovpnversion and it supports"
