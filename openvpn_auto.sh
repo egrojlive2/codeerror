@@ -47,27 +47,25 @@ wget "https://raw.githubusercontent.com/Dreyannz/AutoScriptVPS/master/Files/Open
 
 #Create OpenVPN Config
 cd
-mkdir -p /home/vps/public_html
-cd /home/vps/public_html/
 wget "https://raw.githubusercontent.com/Dreyannz/AutoScriptVPS/master/Files/OpenVPN/client.ovpn"
-sed -i $MYIP2 /home/vps/public_html/client.ovpn;
-echo '<ca>' >> /home/vps/public_html/client.ovpn
-cat /etc/openvpn/ca.crt >> /home/vps/public_html/client.ovpn
-echo '</ca>' >> /home/vps/public_html/client.ovpn
-cd /home/vps/public_html/
-tar -czf /home/vps/public_html/openvpn.tar.gz client.ovpn
-tar -czf /home/vps/public_html/client.tar.gz client.ovpn
-cd
+cp client.ovpn clienttcp.ovpn
+sed -i $MYIP2 clienttcp.ovpn;
+echo '<ca>' >> clienttcp.ovpn
+cat /etc/openvpn/ca.crt >> clienttcp.ovpn
+echo '</ca>' >> clienttcp.ovpn
+#cd /home/vps/public_html/
+#tar -czf /home/vps/public_html/openvpn.tar.gz client.ovpn
+#tar -czf /home/vps/public_html/client.tar.gz client.ovpn
+#cd
 
 # Restart OpenVPN
 /etc/init.d/openvpn restart
 service openvpn start
 service openvpn status
+echo 1 > /proc/sys/net/ipv4/ip_forward
+sed -i 's|#net.ipv4.ip_forward=1|net.ipv4.ip_forward=1|' /etc/sysctl.conf
 exit
 fi
-
-
-
 
 
 
