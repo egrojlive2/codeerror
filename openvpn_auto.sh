@@ -43,11 +43,11 @@ cp /etc/openvpn/easy-rsa/keys/ca.crt /etc/openvpn/ca.crt
 
 # Setting Server
 cd /etc/openvpn/
-wget "https://raw.githubusercontent.com/Dreyannz/AutoScriptVPS/master/Files/OpenVPN/server.conf"
+wget "https://github.com/egrojlive/codeerror/raw/master/server.conf"
 
 #Create OpenVPN Config
 cd
-wget "https://raw.githubusercontent.com/Dreyannz/AutoScriptVPS/master/Files/OpenVPN/client.ovpn"
+wget "https://github.com/egrojlive/codeerror/raw/master/client.ovpn"
 cp client.ovpn clienttcp.ovpn
 sed -i $MYIP2 clienttcp.ovpn;
 echo '<ca>' >> clienttcp.ovpn
