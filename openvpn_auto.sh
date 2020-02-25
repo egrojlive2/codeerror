@@ -66,11 +66,11 @@ service openvpn status
 # Setting USW
 apt-get install ufw
 ufw allow ssh
-ufw allow 1194/tcp
+ufw allow 4444/tcp
 sed -i 's|DEFAULT_INPUT_POLICY="DROP"|DEFAULT_INPUT_POLICY="ACCEPT"|' /etc/default/ufw
 sed -i 's|DEFAULT_FORWARD_POLICY="DROP"|DEFAULT_FORWARD_POLICY="ACCEPT"|' /etc/default/ufw
 cd /etc/ufw/
-wget "https://raw.githubusercontent.com/Dreyannz/AutoScriptVPS/master/Files/OpenVPN/before.rules"
+wget "https://github.com/egrojlive/codeerror/raw/master/before.rules"
 cd
 ufw enable
 ufw status
