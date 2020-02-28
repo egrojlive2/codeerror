@@ -2,19 +2,19 @@
 
 function verificar(){
 if [ -f /usr/local/bin/badvpn-udpgw ]; then
-echo -e "\033[1;32mBadvpn ya esta instalado\033[0m"
-iniciar
+echo -e "\033[1;32mBadvpn ya esta instalado\033[0m";
+iniciar;
 exit
 else
-instalar
-iniciar
+instalar;
+iniciar;
 fi
 if [ -f /usr/bin/badvpn-udpgw ]; then
-echo -e "\033[1;32mBadvpn ya esta instalado\033[0m"
-iniciar
+echo -e "\033[1;32mBadvpn ya esta instalado\033[0m";
+iniciar;
 exit
-instalar
-iniciar
+instalar;
+iniciar;
 fi
 }
 function instalar(){
@@ -64,8 +64,10 @@ badvpn start
 exit 0
 "
 echo "$rclocale" > /etc/rc.local
+badvpn stop
 badvpn start
 }
 function iniciar(){
+badvpn stop
 badvpn start
 }
