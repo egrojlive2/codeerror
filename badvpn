@@ -24,8 +24,7 @@ else
 clear
 fi
 if [ -f /usr/bin/badvpn-udpgw ]; then
-echo -e "\033[1;32mBadvpn ya esta instalado\033[0m"
-badvpn start
+echo -e "\033[1;32mBadvpn ya esta instalado\033[0m";badvpn start
 exit
 else
 clear
@@ -56,8 +55,8 @@ rm -rf /etc/badvpn-install
 cd ; rm -rf badvpn.sh badvpn-1.999.128/ badvpn-1.999.128.tar.bz2 >/dev/null 2>/dev/null
 
 rclocale="
-badvpn start
+badvpn start;
 exit 0
 "
 echo "$rclocale" > /etc/rc.local
-badvpn start
+badvpn start;
