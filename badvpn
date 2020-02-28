@@ -7,13 +7,14 @@ iniciar
 exit
 else
 instalar
+iniciar
 fi
 if [ -f /usr/bin/badvpn-udpgw ]; then
 echo -e "\033[1;32mBadvpn ya esta instalado\033[0m"
 iniciar
 exit
 instalar
-clear
+iniciar
 fi
 }
 function instalar(){
