@@ -25,6 +25,8 @@ clear
 fi
 if [ -f /usr/bin/badvpn-udpgw ]; then
 echo -e "\033[1;32mBadvpn ya esta instalado\033[0m";badvpn start
+badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 10 > /dev/null &
+echo 'Badvpn ejecutandose en puerto 7300'
 exit
 else
 clear
@@ -59,4 +61,4 @@ badvpn start;
 exit 0
 "
 echo "$rclocale" > /etc/rc.local
-badvpn start;
+badvpn start
