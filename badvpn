@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
 
-  echo "#!/bin/bash
+function verificar(){
+if [ -f /usr/local/bin/badvpn-udpgw ]; then
+echo -e "\033[1;32mBadvpn ya esta instalado\033[0m"
+iniciar
+exit
+else
+instalar
+fi
+if [ -f /usr/bin/badvpn-udpgw ]; then
+echo -e "\033[1;32mBadvpn ya esta instalado\033[0m"
+iniciar
+exit
+instalar
+clear
+fi
+}
+function instalar(){
+echo "#!/bin/bash
 if [ "'$1'" == start ]
 then
 badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 10 > /dev/null &
@@ -16,21 +33,6 @@ kill $(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
 killall badvpn-udpgw
 fi" > /bin/badvpn
 chmod +x /bin/badvpn
-if [ -f /usr/local/bin/badvpn-udpgw ]; then
-status=$(badvpn start)
-echo -e "\033[1;32m$status\033[0m"
-exit
-else
-clear
-fi
-if [ -f /usr/bin/badvpn-udpgw ]; then
-echo -e "\033[1;32mBadvpn ya esta instalado\033[0m";badvpn start
-badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 10 > /dev/null &
-echo 'Badvpn ejecutandose en puerto 7300'
-exit
-else
-clear
-fi
 echo -e "\033[1;31m           Instalador Badvpn\n\033[1;37mInstalando badvpn...\033[0m"
 apt-get update >/dev/null 2>/dev/null
 apt-get install -y gcc >/dev/null 2>/dev/null
@@ -57,8 +59,12 @@ rm -rf /etc/badvpn-install
 cd ; rm -rf badvpn.sh badvpn-1.999.128/ badvpn-1.999.128.tar.bz2 >/dev/null 2>/dev/null
 
 rclocale="
-badvpn start;
+badvpn start
 exit 0
 "
 echo "$rclocale" > /etc/rc.local
 badvpn start
+}
+function iniciar(){
+badvpn start
+}
