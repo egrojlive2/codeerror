@@ -61,3 +61,4 @@ function iniciar(){
 badvpn start
 }
 verificar
+rm $0
