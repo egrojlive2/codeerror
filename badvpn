@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function verificar(){
 if [ -f /bin/badvpn ]; then
@@ -6,7 +6,6 @@ iniciar
 exit
 else
 instalar
-iniciar
 fi
 }
 function instalar(){
@@ -49,16 +48,16 @@ echo -e "\033[1;32m             Instalacion completada\033[0m"
 echo -e "\033[1;37mComandos:\n\033[1;31mbadvpn start\033[1;37m Para ejecutar badvpn"
 echo -e "\033[1;31mbadvpn stop \033[1;37m Para detener badvpn\033[0m"
 rm -rf /etc/badvpn-install
-cd ; rm -rf badvpn-1.999.128/ badvpn-1.999.128.tar.bz2 >/dev/null 2>/dev/null
-
+cd ; rm -rf badvpn.sh badvpn-1.999.128/ badvpn-1.999.128.tar.bz2 >/dev/null 2>/dev/null
+iniciar
 rclocale="
 badvpn start
 exit 0
 "
 echo "$rclocale" > /etc/rc.local
+rm $0
 }
 function iniciar(){
 badvpn start
 }
 verificar
-rm $0
