@@ -154,9 +154,9 @@ stunnel4port="$(netstat -nlpt | grep -i stunnel | grep -i 0.0.0.0 | awk '{print 
 openvpnport="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
 
-echo -e "         Host / IP       :  "$MYIP
-echo -e "         Port OpenSSH    :  "$opensshport
-echo -e "         Port Dropbear   :  "$dropbearport
-echo -e "         Port SSL        :  "$stunnel4port
-echo -e "         Port Squid      :  "$squidport
-echo -e "         Port OpenVPN    :  "$openvpnport
+echo -e "<font color=\"#77C500\">         Host / IP       :  </font>"$MYIP
+echo -e "<font color=\"#77C500\">         Port OpenSSH    :  </font>"$opensshport
+echo -e "<font color=\"#77C500\">         Port Dropbear   :  </font>"$dropbearport
+echo -e "<font color=\"#77C500\">         Port SSL        :  </font>"$stunnel4port
+echo -e "<font color=\"#77C500\">         Port Squid      :  </font>"$squidport
+echo -e "<font color=\"#77C500\">         Port OpenVPN    :  </font>"$openvpnport
