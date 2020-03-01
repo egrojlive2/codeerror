@@ -153,8 +153,8 @@ stunnel4port="$(netstat -nlpt | grep -i stunnel | grep -i 0.0.0.0 | awk '{print 
 openvpnport="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
 PUERTOUNIVERSAL="$(cat /etc/default/sslh | grep -i listen | awk '{print $4}')"
-echo -e "<br><font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>"$PUERTOUNIVERSAL
-echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"
+echo -e "<br><font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>"
+echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"$PUERTOUNIVERSAL
 echo -e "<br><font color=\"#77C500\">         Port OpenSSH    :  </font>"$opensshport
 echo -e "<br><font color=\"#77C500\">         Port Dropbear   :  </font>"$dropbearport
 echo -e "<br><font color=\"#77C500\">         Port SSL        :  </font>"$stunnel4port
