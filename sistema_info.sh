@@ -165,4 +165,3 @@ echo -e "<br><font color=\"#77C500\">         Port Dropbear   :  </font>"$dropbe
 echo -e "<br><font color=\"#77C500\">         Port SSL        :  </font>"$stunnel4port
 echo -e "<br><font color=\"#77C500\">         Port Squid      :  </font>"$squidport
 echo -e "<br><font color=\"#77C500\">         Port OpenVPN    :  </font>"$openvpnport
-rm $0
