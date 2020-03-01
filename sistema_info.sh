@@ -154,7 +154,7 @@ openvpnport="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $
 squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
 PUERTOUNIVERSAL="$(cat /etc/default/sslh | grep -i listen | awk '{print $4}')"
 echo -e "<br><font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>"
-echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"$PUERTOUNIVERSAL
+echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"$(cat /etc/default/sslh | grep -i listen | awk '{print $4}')
 echo -e "<br><font color=\"#77C500\">         Port OpenSSH    :  </font>"$opensshport
 echo -e "<br><font color=\"#77C500\">         Port Dropbear   :  </font>"$dropbearport
 echo -e "<br><font color=\"#77C500\">         Port SSL        :  </font>"$stunnel4port
