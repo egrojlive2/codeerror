@@ -59,9 +59,15 @@ echo "$rclocale" > /etc/rc.local
 rm $0
 }
 function iniciar(){
-mkdir /etc/code/ > /dev/null 2>&1
+if [ -f /etc/code/badvpn.sh ];
+then
 echo "#!/usr/bin/env bash
 badvpn start" > /etc/code/badvpn.sh
+else
+mkdir /etc/code
+echo "#!/usr/bin/env bash
+badvpn start" > /etc/code/badvpn.sh
+fi
 echo "[Unit]
 Description=SERVICIO BADVPN SOPRTE DE VIDEOLLAMADAS(UDP)
 
