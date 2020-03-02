@@ -59,7 +59,7 @@ echo "$rclocale" > /etc/rc.local
 rm $0
 }
 function iniciar(){
-mkdir /etc/code /dev/null 2>&1
+mkdir /etc/code > /dev/null 2>&1
 echo "#!/usr/bin/env bash
 badvpn start" > /etc/code/badvpn.sh
 echo "[Unit]
