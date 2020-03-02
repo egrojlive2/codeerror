@@ -59,6 +59,23 @@ echo "$rclocale" > /etc/rc.local
 rm $0
 }
 function iniciar(){
-badvpn start
+mkdir /etc/code /dev/null 2>&1
+echo "#!/usr/bin/env bash
+badvpn start" > /etc/code/badvpn.sh
+echo "[Unit]
+Description=SERVICIO BADVPN SOPRTE DE VIDEOLLAMADAS(UDP)
+
+[Service]
+Type=forking
+ExecStart=/etc/code/badvpn.sh
+User=root
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/badvpn.service
+
+chmod +x /etc/code/badvpn.sh
+chmod +x /etc/systemd/system/badvpn.service
+systemctl daemon-reload > /dev/null 2>&1
+systemctl start badvpn.service > /dev/null 2>&1
+echo ""badvpn ejecutandose en puerto 7300
 }
 verificar
