@@ -69,7 +69,7 @@ echo "#!/usr/bin/env bash
 badvpn start" > /etc/code/badvpn.sh
 fi
 echo "[Unit]
-Description=SERVICIO BADVPN SOPRTE DE VIDEOLLAMADAS(UDP)
+Description=SERVICIO BADVPN SOPORTE DE VIDEOLLAMADAS(UDP)
 
 [Service]
 Type=forking
