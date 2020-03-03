@@ -125,8 +125,7 @@ fi
 # If "you no like", delete it or replace with your own ;)
 # Print out all of the information collected using the script
 # ($local_ip)
-<span style="color: #ffffff;">prueba spna</span>
-echo -e "<font color=\"#FFBF38\">=========:System Data:=========</font><br>
+echo -e "<span style=\"color: #ffffff;\">prueba spna</span><br><font color=\"#FFBF38\">=========:System Data:=========</font><br>
 <font color=\"#77C500\">Hostname =</font>  $(hostname) ($(hostname --fqdn))<br>
 <font color=\"#77C500\">IPv4 Address =</font>  $remote_ip<br>
 <font color=\"#77C500\">Uptime =</font>  $machine_uptime<br>
