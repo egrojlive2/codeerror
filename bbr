@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04"; then
-echo "EL SCRIP NO ES COMPATIBLE CON ESTE SISTEMA"
+echo "EL SCRIPT NO ES COMPATIBLE CON ESTE SISTEMA"
 exit 0
 fi
 red='\033[0;31m'
