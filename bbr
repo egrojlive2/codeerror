@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04"; then
+if cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04"; then
 echo "EL SCRIPT NO ES COMPATIBLE CON ESTE SISTEMA"
 exit 0
 fi
