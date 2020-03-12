@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 function verificar(){
+apt-get install systemd -y > /dev/null 2>&1
 if [ -f /bin/badvpn ]; then
 iniciar
 exit
