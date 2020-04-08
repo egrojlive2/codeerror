@@ -2,8 +2,8 @@
 rm ONLINE > /dev/null 2>&1;rm ssh.txt > /dev/null 2>&1;rm login-db.txt > /dev/null 2>&1
 
 data=( `ps aux | grep "\[priv\]" | sort -k 72 | awk '{print $2}'`);
-NUM2=`ps aux | grep sshd | grep -v root | grep -v debian | grep -v admin | wc -l`;
-
+#NUM2=`ps aux | grep sshd | grep -v root | grep -v debian | grep -v admin | wc -l`;
+#tot=0
 echo '<font color=\"#FFBF38\">Usuarios Openssh '$((NUM2))'</font><br>'
 #echo "$data"
 for PID in "${data[@]}"
@@ -15,9 +15,11 @@ do
         IP=`cat /var/log/auth.log | grep -i sshd | grep -i "Accepted password for" | grep "sshd\[$PID\]" | awk '{print $11}'`;
         if [ $NUM2 -eq 1 ]; then
                 echo "$USER" >> ssh.txt;
+                tot=tot + 1
                 #echo "[TOTAL en OpenSSH]: $NUM2";
         fi
 done
 if [ -f ssh.txt ]; then
+echo "USUARIOS SSH $tot"
 sed 's/\\s/\\n/g' ssh.txt | sort | uniq  -c | sort -n | sed 's/$/<br>/'
 fi
