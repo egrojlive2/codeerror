@@ -3,8 +3,8 @@ rm ONLINE > /dev/null 2>&1;rm ssh.txt > /dev/null 2>&1;rm login-db.txt > /dev/nu
 
 data=( `ps aux | grep "\[priv\]" | sort -k 72 | awk '{print $2}'`);
 #NUM2=`ps aux | grep sshd | grep -v root | grep -v debian | grep -v admin | wc -l`;
-#tot=0
-echo '<font color=\"#FFBF38\">Usuarios Openssh '$((NUM2))'</font><br>'
+tot=0
+#echo '<font color=\"#FFBF38\">Usuarios Openssh '$((NUM2))'</font><br>'
 #echo "$data"
 for PID in "${data[@]}"
 do
