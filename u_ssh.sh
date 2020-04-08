@@ -15,7 +15,7 @@ do
         IP=`cat /var/log/auth.log | grep -i sshd | grep -i "Accepted password for" | grep "sshd\[$PID\]" | awk '{print $11}'`;
         if [ $NUM2 -eq 1 ]; then
                 echo "$USER" >> ssh.txt;
-                tot=tot + 1
+                ((tot ++))
                 #echo "[TOTAL en OpenSSH]: $NUM2";
         fi
 done
