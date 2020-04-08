@@ -19,7 +19,7 @@ do
                 #echo "[TOTAL en OpenSSH]: $NUM2";
         fi
 done
-if [ -f ssh.txt ]; then
 echo "USUARIOS SSH $tot"
+if [ -f ssh.txt ]; then
 sed 's/\\s/\\n/g' ssh.txt | sort | uniq  -c | sort -n | sed 's/$/<br>/'
 fi
