@@ -1,6 +1,6 @@
 {
   "versionCode":2,
   "versionName":"2.82",
-  "mejoras":"1.Correccion De Errores#2.Funcion Agregar Servidores#3.Eliminar Usuarios Caducados#4.Cambiar Puertos#5.Consultar Datos De Shadowsocks",
+  "mejoras":"1.Correccion De Errores#2.Solicitud De Permisos De Aplicacion#3.Eliminar Usuarios Caducados#4.Consultar Datos De Shadowsocks",
   "url":"https://drive.google.com/uc?export=download&id=1A4l8qbOs7J04MuaXGsrONi-Bo4ef9SYj"
 }
