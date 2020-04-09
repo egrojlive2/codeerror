@@ -17,7 +17,7 @@ d_c=$(echo $fecha_cad | cut -d " " -f2)
 
 fecha_cad=$(date -d "$d_c-$m_c-$a_c" +'%Y%m%d')
 
-if [ $hoy -gt $fecha_cad ]; then
+if [ $hoy -ge $fecha_cad ]; then
 pkill -u $usuario
 userdel $usuario
 ((eliminados ++))
