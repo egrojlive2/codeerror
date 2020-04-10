@@ -1,6 +1,6 @@
 {
   "versionCode":2,
-  "versionName":"2.81",
-  "mejoras":"1.Correccion De Errores#2.Solicitud De Permisos De Aplicacion#3.Eliminar Usuarios Caducados#4.Consultar Datos De Shadowsocks",
-  "url":"https://drive.google.com/uc?export=download&id=1dK_i41Fi8iJ3FBQK0JJacdQC_q7ANmVz"
+  "versionName":"2.82",
+  "mejoras":"1.Correccion De Errores#2.Generar Link Shadowsocks",
+  "url":"https://drive.google.com/uc?export=download&id=1TyGKrVJAFgv7kPvRNGEgwy_ae35-TEFl"
 }
