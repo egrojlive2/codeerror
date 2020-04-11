@@ -425,14 +425,14 @@ speedtest () {
   sURL=$(getValue "${bestServer}" url)
 
   info "Hosted by %s (%s) [%s km]: %s ms\n" "$sSponsor" "$sName" \
-    "$sDistance" "$sLatency"
+    "$sDistance" "$sLatency" > /dev/null 2>&1
 
   sServer=$(echo $sHost | cut -d: -f1)
   sPort=$(echo $sHost | cut -d: -f2)
-
-  if [ $flag_simple -eq 1 ]; then
-    printf "<font color=\"#e95420\">Ping: </font><font color=\"green\">%s ms</font><br>" "$sLatency"
-  fi
+  printf "<font color=\"#e95420\">Ping: </font><font color=\"green\">%s ms</font><br>" "$sLatency"
+  #if [ $flag_simple -eq 1 ]; then
+    #printf "<font color=\"#e95420\">Ping: </font><font color=\"green\">%s ms</font><br>" "$sLatency"
+  #fi
 
   download_test "$sServer" "$sPort"
   upload_test "$sURL"
