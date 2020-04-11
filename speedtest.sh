@@ -80,13 +80,13 @@ normal=1
 
 init () {
   if [ "x$source" != "x" ]; then
-    info "The testing will originate from $source ...\n"
+    info "The testing will originate from $source ...\n" > /dev/null 2>&1
   fi
 
-  info "Retrieving speedtest.net configuration...\n"
+  info "Retrieving speedtest.net configuration...\n" > /dev/null 2>&1
   getConfigFile
 
-  info "Retrieving speedtest.net server list...\n"
+  info "Retrieving speedtest.net server list...\n" > /dev/null 2>&1
   fetchClosestServers
 }
 
