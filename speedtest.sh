@@ -195,7 +195,7 @@ fetchClosestServers () {
   response_code=$($PROG_CURL $CURL_OPTS -sw '%{http_code}' "${SPEEDTEST_SERVERS}" -o ${servers})
 
   if [ "x$response_code" != "x200" ]; then
-    echo "ERROR: Could not get servers list!!!"
+    echo "ERROR: No Fue Posible Realizar El Test Por Favor Intenta Nuevamente!!!"
     normal=0
     cleanup
   fi
