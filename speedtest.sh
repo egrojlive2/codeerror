@@ -195,7 +195,7 @@ fetchClosestServers () {
   response_code=$($PROG_CURL $CURL_OPTS -sw '%{http_code}' "${SPEEDTEST_SERVERS}" -o ${servers})
 
   if [ "x$response_code" != "x200" ]; then
-    echo "ERROR: No Fue Posible Realizar El Test Por Favor Intenta Nuevamente!!!"
+    echo "ERROR: Could not get servers list!!!"
     normal=0
     cleanup
   fi
@@ -223,12 +223,12 @@ fetchClosestServers () {
     distance $clat $clon "$line" &
     jobs_pid="${jobs_pid} ${!}"
     if [ $(expr $i % 20) -eq 0 ]; then
-      info "\r%s %%" "$(echo "($i/$num_server * 100)" | bc -l | awk '{printf "%0.2f", $0}')"
+      info "\r%s %%" "$(echo "($i/$num_server * 100)" | bc -l | awk '{printf "%0.2f", $0}')" > /dev/null 2>&1
     fi
   done
 
-  info "\r        "
-  info "\r100 %%\n"
+  info "\r        " > /dev/null 2>&1
+  info "\r100 %%\n" > /dev/null 2>&1
 
   wait $jobs_pid 2>/dev/null
   cat $closest | sort -n > $closest_cache
@@ -311,9 +311,9 @@ progress () {
   if [ -x "${PROG_SPARK}" ]; then
     echo -n "${data} " >> ${histogram}
     h=$($PROG_SPARK 0 $(cat ${histogram}))
-    info "\r${title} ${h}"
+    info "\r${title} ${h}" > /dev/null 2>&1
   else
-    info "."
+    info "." > /dev/null 2>&1
   fi
 }
 
@@ -326,7 +326,7 @@ download_test () {
   test -z $test_server && echo "Unsupported server, no socket service, skip download test !!!" && return
 
   title="Testing download speed"
-  info "$title"
+  info "$title" > /dev/null 2>&1
 
   echo "DOWNLOAD ${test_filesize}" | \
     $PROG_NC $NC_OPTS ${test_server} ${test_port} 2>/dev/null | \
@@ -373,7 +373,7 @@ upload_test () {
   period=10
 
   title="Testing upload speed"
-  info "$title"
+  info "$title" > /dev/null 2>&1
 
   echo -n "content1=" > ${uldata}
   for i in `seq 1 25`; do
@@ -407,10 +407,10 @@ upload_test () {
 speedtest () {
   ip=$(getValue "${client_conf}" ip)
   isp=$(getValue "${client_conf}" isp)
-  info "Testing from %s (%s)...\n" "$isp" "$ip"
+  info "Testing from %s (%s)...\n" "$isp" "$ip" > /dev/null 2>&1
 
   if [ "x$serverid" = "x" ]; then
-    info "Selecting best server based on latency...\n"
+    info "Selecting best server based on latency...\n" > /dev/null 2>&1
   fi
 
   bestServer=$(getBestServer)
@@ -425,7 +425,7 @@ speedtest () {
   sURL=$(getValue "${bestServer}" url)
 
   info "Hosted by %s (%s) [%s km]: %s ms\n" "$sSponsor" "$sName" \
-    "$sDistance" "$sLatency"
+    "$sDistance" "$sLatency" > /dev/null 2>&1
 
   sServer=$(echo $sHost | cut -d: -f1)
   sPort=$(echo $sHost | cut -d: -f2)
