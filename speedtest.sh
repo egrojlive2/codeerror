@@ -364,7 +364,7 @@ download_test () {
   test -z $speed && speed=0
   dlspeed=$(echo "scale=2; (${speed}*8.388608)/1000" | bc -l)
 
-  printf "<font color=\"orange\">Bajada: </font><font color=\"green\">%0.2f Mbit/s</font><br>" $dlspeed
+  printf "<font color=\"#e95420\">Bajada: </font><font color=\"green\">%0.2f Mbit/s</font><br>" $dlspeed
 }
 
 upload_test () {
@@ -401,7 +401,7 @@ upload_test () {
   speed=$(cat ${ulallspeed} | awk '{sum += $1 } END { if (NR > 0) printf "%0.2f", sum / NR / 1000 /1000 }')
   test -z $speed && speed=0
 
-  printf "<font color=\"orange\">Subida: </font><font color=\"orange\">%0.2f Mbit/s</font><br>" ${speed}
+  printf "<font color=\"#e95420\">Subida: </font><font color=\"green\">%0.2f Mbit/s</font><br>" ${speed}
 }
 
 speedtest () {
@@ -431,7 +431,7 @@ speedtest () {
   sPort=$(echo $sHost | cut -d: -f2)
 
   if [ $flag_simple -eq 1 ]; then
-    printf "<font color=\"orange\">Ping: </font><font color=\"green\">%s ms</font></br>" "$sLatency"
+    printf "<font color=\"#e95420\">Ping: </font><font color=\"green\">%s ms</font><br>" "$sLatency"
   fi
 
   download_test "$sServer" "$sPort"
