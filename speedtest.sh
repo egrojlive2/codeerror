@@ -425,7 +425,7 @@ speedtest () {
   sURL=$(getValue "${bestServer}" url)
 
   info "Hosted by %s (%s) [%s km]: %s ms\n" "$sSponsor" "$sName" \
-    "$sDistance" "$sLatency" > /dev/null 2>&1
+    "$sDistance" "$sLatency"
 
   sServer=$(echo $sHost | cut -d: -f1)
   sPort=$(echo $sHost | cut -d: -f2)
