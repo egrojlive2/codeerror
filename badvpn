@@ -35,8 +35,8 @@ apt-get install -y openssl >/dev/null 2>/dev/null
 apt-get install -y build-essential >/dev/null 2>/dev/null
 apt-get install -y cmake >/dev/null 2>/dev/null
 echo -e "\033[1;37mDescargando Badvpn"; cd
-#wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/badvpn/badvpn-1.999.128.tar.bz2 -o /dev/null
-wget https://www.dropbox.com/s/bc5crnb77ban51i/badvpn-1.999.128.tar.bz2 -o /dev/null
+wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/badvpn/badvpn-1.999.128.tar.bz2 -o /dev/null
+#wget https://www.dropbox.com/s/bc5crnb77ban51i/badvpn-1.999.128.tar.bz2 -o /dev/null
 echo -e "Descomprimiendo Badvpn"
 tar -xf badvpn-1.999.128.tar.bz2
 echo -e "Iniciando configuraciones"
