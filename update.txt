@@ -1,6 +1,6 @@
 {
   "versionCode":2,
-  "versionName":"2.84",
-  "mejoras":"1.Add Solicitud Permisos De Almacenamiento#2.Add Speed Test#3.Add Eliminar Usuarios Expirados#4.Add Consulta De Datos De Shadowsocks#5Add Link De Shadowsocks(clipboard)#6.Compartir Usuario Con Links Shadowsocks#7.ESTADO DE PROCESO DE INSTALACION",
-  "url":"https://drive.google.com/uc?export=download&id=1kwHGK3BdZ0r-j93ew2h06cFYkCdDbrAn"
+  "versionName":"2.85",
+  "mejoras":"1.Add Solicitud Permisos De Almacenamiento#2.Add Speed Test#3.Add Eliminar Usuarios Expirados#4.Add Consulta De Datos De Shadowsocks#5Add Link De Shadowsocks(clipboard)#6.Compartir Usuario Con Links Shadowsocks#7.ESTADO DE PROCESO DE INSTALACION#8.CORRECION DE ERRORES DE INSTALACION Y REINSTALACION DE SHADOWSOCKS",
+  "url":"https://drive.google.com/uc?export=download&id=1AEL65OrdgruG0R7wSdcouhAyrg-ynxLd"
 }
