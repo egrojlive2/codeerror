@@ -21,6 +21,6 @@ do
 done
 echo "<font color=\"#FFBF38\">USUARIOS SSH $tot</font><br>"
 if [ -f ssh.txt ]; then
-echo "<font color=\"green"\>Conexiones - Usuarios</font><br>"
+echo "<font color=\"green\">Conexiones - Usuarios</font><br>"
 sed 's/\\s/\\n/g' ssh.txt | sort | uniq  -c | sort -n | sed 's/$/<br>/'
 fi
