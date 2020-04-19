@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "INSTALANDO PROXY PYTHON"
+echo "INSTALANDO PROXY PYTHON 8081"
 echo
 echo
 if [ -f /etc/code/proxy.py ]; then
@@ -25,4 +25,5 @@ WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
 chmod +x /etc/systemd/system/proxypy.service > /dev/null 2>&1;
 systemctl daemon-reload > /dev/null 2>&1;
 systemctl restart proxypy.service > /dev/null 2>&1;
-rm $0
+rm proxy.sh > /dev/null 2>&1;
+rm $0 > /dev/null 2>&1;
