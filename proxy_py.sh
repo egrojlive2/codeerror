@@ -17,7 +17,7 @@ Description=SERVICIO proxy python en escucha puerto 8081
 
 [Service]
 Type=ilde
-ExecStart=python /etc/code/proxy.py
+ExecStart=/usr/bin/python /etc/code/proxy.py
 User=root
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
@@ -25,4 +25,4 @@ WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
 chmod +x /etc/systemd/system/proxypy.service > /dev/null 2>&1;
 systemctl daemon-reload > /dev/null 2>&1;
 systemctl restart proxypy.service > /dev/null 2>&1;
-echo "PROXY INSTALADO EN PUERTO 8081"
+rm $0
