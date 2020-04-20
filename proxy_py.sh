@@ -9,8 +9,8 @@ mkdir /etc/code > /dev/null 2>&1;
 wget https://github.com/egrojlive/codeerror/raw/master/pr_py.py -O /etc/code/proxy.py > /dev/null 2>&1;
 chmod +x /etc/code/proxy.py > /dev/null 2>&1;
 fi
-sed -i "s/8080/8081/g" /etc/default/sslh > /dev/null 2>&1;
-service sslh restart > /dev/null 2>&1;
+#sed -i "s/8080/8081/g" /etc/default/sslh > /dev/null 2>&1;
+#service sslh restart > /dev/null 2>&1;
 
 echo "[Unit]
 Description=SERVICIO proxy python en escucha puerto 8081
