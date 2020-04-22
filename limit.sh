@@ -53,5 +53,5 @@ exit
 " > /etc/code/limite/$1.sh
 chmod a+x /etc/code/limite/$1.sh 2>/dev/null
 echo "*/1 * * * * root /etc/code/limite/$1.sh #$1#" >> /etc/crontab
-echo -e "\033[1;37mUsuario: \033[1;31m[\033[1;37m$1\033[1;31m]\033[1;37m Limite: \033[1;31m[\033[1;37m$2\033[1;31m] \033[1;37m[\033[1;31mLimite Aplicado\033[1;37m]  \033[0m" 
+echo "Usuario: $1 Limite: $2 Aplicado" 
 echo "$2" > /etc/code/limite/$1
