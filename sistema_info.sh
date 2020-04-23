@@ -1,4 +1,8 @@
 #!/bin/bash
+proveedor=$(curl -s https://www.whoismyisp.org | grep -oP -m1 '(?<=isp">).*(?=</p)')
+if [[ $proveedor == *Amazon* ]]; then
+sudo su
+fi
 apt install net-tools -y > /dev/null 2>&1
 ########################################################################
 # Color esthetics
