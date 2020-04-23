@@ -1,6 +1,6 @@
 {
   "versionCode":2,
-  "versionName":"2.87",
-  "mejoras":"1.Correccio De Actualizacion DE La App#2.Add Speed Test#3.Add Eliminar Usuarios Expirados#4.Add Consulta De Datos De Shadowsocks#5Add Link De Shadowsocks(clipboard)#6.Compartir Usuario Con Links Shadowsocks#7.ESTADO DE PROCESO DE INSTALACION#8.CORRECION DE ERRORES DE INSTALACION Y REINSTALACION DE SHADOWSOCKS#***INSTALACION PROXY PYTHON***",
-  "url":"https://drive.google.com/uc?id=1pdzopluuuDlpZmspX_4qtuXCDT9OMfQR&export=download"
+  "versionName":"2.89",
+  "mejoras":"1.Limite De Usuarios#2.***INSTALACION PROXY PYTHON***#3.Test De Velocidad#4.Eliminar Usuarios Expirados#5.Consulta De Datos De Shadowsocks#6Add Link De Shadowsocks(clipboard)",
+  "url":"https://docs.google.com/uc?export=download&id=1NoDRiCWb6BbC7fDzEvf0CuaB0mYTVSTm"
 }
