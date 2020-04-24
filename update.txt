@@ -1,6 +1,6 @@
 {
   "versionCode":2,
-  "versionName":"2.89",
-  "mejoras":"1.Limite De Usuarios#2.***INSTALACION PROXY PYTHON***#3.Test De Velocidad#4.Eliminar Usuarios Expirados#5.Consulta De Datos De Shadowsocks#6Add Link De Shadowsocks(clipboard)",
-  "url":"https://docs.google.com/uc?export=download&id=1NoDRiCWb6BbC7fDzEvf0CuaB0mYTVSTm"
+  "versionName":"2.90",
+  "mejoras":"1.***Limite De Usuarios***#2.***INSTALACION PROXY PYTHON***#3.Test De Velocidad#4.Eliminar Usuarios Expirados#5.Consulta De Datos De Shadowsocks#6Add Link De Shadowsocks(clipboard)",
+  "url":"https://docs.google.com/uc?export=download&id=1Au6PMCIQjiNYMm3i4nJoAmpvnfJ6nfU_"
 }
