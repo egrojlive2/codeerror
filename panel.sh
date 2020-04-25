@@ -5,7 +5,7 @@ fecha=$3
 conexiones=$4
 contra=$5
 crownvpn(){
-contra="9AN2NL5544303780"
+contra="mikey"
 if [ $token ]; then
 if [ $fecha ]; then
 if chage -l $token > /dev/null 2>&1; then
