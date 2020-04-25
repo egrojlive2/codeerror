@@ -1,6 +1,4 @@
 #!/bin/bash
-#/usr/bin/panel.sh crownvpn 452425245242424 2020/08/25
-#/usr/bin/panel.sh codeerror jorge 2020/08/11 5 2345
 opcion=$1
 token=$2
 fecha=$3
