@@ -18,6 +18,7 @@ chage -E $fecha $token
 usermod -c $fecha $token > /dev/null 2>&1
 echo "$token:$contra" | chpasswd
 echo "TOKEN: $token MODIFICADO"
+echo
 echo "Vence El Dia $fecha"
 pkill -u $token
 else
@@ -26,6 +27,7 @@ chage -E $fecha $token
 usermod -c $fecha $token
 echo "$token:$contra" | chpasswd
 echo "NUEVO TOKEN REGISTRADO"
+echo
 echo "Vence El Dia $fecha"
 fi
 else
