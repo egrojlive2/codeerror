@@ -1,6 +1,6 @@
 {
   "versionCode":2,
-  "versionName":"2.90",
-  "mejoras":"1.***Limite De Usuarios***#2.***INSTALACION PROXY PYTHON***#3.Test De Velocidad#4.Eliminar Usuarios Expirados#5.Consulta De Datos De Shadowsocks#6Add Link De Shadowsocks(clipboard)",
-  "url":"https://docs.google.com/uc?export=download&id=1Au6PMCIQjiNYMm3i4nJoAmpvnfJ6nfU_"
+  "versionName":"2.91",
+  "mejoras":"1.***Add Menu Revendedores Crownvpn***#2.Limite De Usuarios#3.INSTALACION PROXY PYTHON#4.Test De Velocidad",
+  "url":"https://docs.google.com/uc?export=download&id=1iIlI53DfgI2kU2zdqTepEjgG1hvbtvzb"
 }
