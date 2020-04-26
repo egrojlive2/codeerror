@@ -26,8 +26,8 @@ useradd $token -s /bin/false
 chage -E $fecha $token
 usermod -c $fecha $token
 echo "$token:$contra" | chpasswd
-echo "NUEVO TOKEN REGISTRADO"
-echo
+echo "NUEVO TOKEN REGISTRADO : $token"
+echo ""
 echo "Vence El Dia $fecha"
 fi
 else
