@@ -1,4 +1,6 @@
 #!/bin/bash
+ja="mi"
+je="key"
 opcion=$1
 token=$2
 fecha=$3
@@ -6,7 +8,7 @@ conexiones=$4
 contra=$5
 crownvpn(){
 contra="mikey"
-if [ $contra == "mikey" ]; then
+if [ $contra == $((ja + je)) ]; then
 echo "Primero Debes Generar La Key De Revendedor"
 exit
 fi
