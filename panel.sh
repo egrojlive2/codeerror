@@ -6,6 +6,10 @@ conexiones=$4
 contra=$5
 crownvpn(){
 contra="mikey"
+if [ $contra == "mikey" ]; then
+echo "Primero Debes Generar La Key De Revendedor"
+exit
+fi
 if [ $token ]; then
 if [ $fecha ]; then
 if chage -l $token > /dev/null 2>&1; then
