@@ -1,6 +1,6 @@
 {
   "versionCode":2,
   "versionName":"2.93",
-  "mejoras":"1.***Add Menu Revendedores Crownvpn***#2.Limite De Usuarios#3.INSTALACION PROXY PYTHON#4.Test De Velocidad",
+  "mejoras":"1.***Add Menu Revendedores Crownvpn***#2.Limite De Usuarios#3.INSTALACION PROXY PYTHON#4.Test De Velocidad###****SI FALLA LA INSTALACION DESINSTALA LA VERSION ANTERIOR****",
   "url":"https://docs.google.com/uc?export=download&id=1D4iCRGsmK3-UHf6T7PUzQWpPPz6cDtyo"
 }
