@@ -1,8 +1,8 @@
 #!/bin/bash
-proveedor=$(curl -s https://www.whoismyisp.org | grep -oP -m1 '(?<=isp">).*(?=</p)')
-if [[ $proveedor == *Amazon* ]]; then
-sudo su
-fi
+#proveedor=$(curl -s https://www.whoismyisp.org | grep -oP -m1 '(?<=isp">).*(?=</p)')
+#if [[ $proveedor == *Amazon* ]]; then
+#sudo su
+#fi
 sistema_operativo=$(cat /etc/os-release)
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
