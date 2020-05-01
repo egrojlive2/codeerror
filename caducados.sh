@@ -1,7 +1,8 @@
 #!/bin/bash
+timedatectl set-timezone America/Mexico_City > /dev/null 2>&1;
 eliminados=0
 lista=""
-hoy=$(date -d "-1 day" +'%Y%m%d')
+hoy=$(date +'%Y%m%d')
 registros=$(grep /home/ /etc/passwd | grep -v syslog | grep -v root | cut -d ":" -f1 | grep -v ntp | grep -v debian)
 
 
