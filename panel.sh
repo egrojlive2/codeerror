@@ -8,7 +8,7 @@ conexiones=$4
 contra=$5
 crownvpn(){
 contra="mikey"
-if [ $contra == $((ja + je)) ]; then
+if [ $contra == "$ja$je" ]; then
 echo "Primero Debes Generar La Key De Revendedor"
 exit
 fi
