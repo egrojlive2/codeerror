@@ -1,4 +1,5 @@
 #!/bin/bash
+timedatectl set-timezone America/Mexico_City > /dev/null 2>&1;
 ja="mi"
 je="key"
 opcion=$1
