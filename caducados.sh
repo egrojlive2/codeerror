@@ -9,12 +9,10 @@ registros=$(grep /home/ /etc/passwd | grep -v syslog | grep -v root | cut -d ":"
 for PID in $registros
 do
 
-usuario=$PID;        
+usuario=$PID;
 
 fecha_cad=$(chage -l "$usuario" | grep -i "Account" | awk -F: '{print $2}' | sed 's/,//g' | cut -d " " -f2,3,4 | awk -F: '{print $1}')
-if [[ $fecha_cad == *never* ]]; then
-break
-fi
+if [[ $fecha_cad != *never* ]]; then
 a_c=$(echo $fecha_cad | cut -d " " -f3)
 m_c=$(echo $fecha_cad | cut -d " " -f1)
 d_c=$(echo $fecha_cad | cut -d " " -f2)
@@ -25,6 +23,7 @@ if [ $hoy -ge $fecha_cad ]; then
 pkill -u $usuario
 userdel $usuario
 ((eliminados ++))
+fi
 fi
 done
 if [ $eliminados -eq 0 ];then
