@@ -2,5 +2,5 @@
   "versionCode":2,
   "versionName":"2.96",
   "mejoras":"**Corrección de errores y primeros cambios de diseño**##1.***Add Menu Revendedores Crownvpn***#2.Limite De Usuarios#3.INSTALACION PROXY PYTHON#4.Test De Velocidad###****SI FALLA LA INSTALACION DESINSTALA LA VERSION ANTERIOR****",
-  "url":"https://drive.google.com/uc?export=download&id=1GVYhtpgLhaeSsT0P4AVv-dQHWJRRjyco"
+  "url":"https://drive.google.com/uc?export=download&id=1Gu5VWKwKHgnk4hdBjs_MVUUOj4Ey-gtA"
 }
