@@ -22,6 +22,8 @@ fecha_cad=$(date -d "$d_c-$m_c-$a_c" +'%Y%m%d')
 if [ $hoy -ge $fecha_cad ]; then
 pkill -u $usuario
 userdel $usuario
+limpcron=$(cat /etc/crontab |grep -v "#$usuario#")
+echo "$limpcron" > /etc/crontab
 ((eliminados ++))
 fi
 fi
