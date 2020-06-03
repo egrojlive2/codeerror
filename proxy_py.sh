@@ -4,6 +4,8 @@ echo "PROXY SSH 8081"
 echo "PROXY OPENVPN 8082"
 if [ -f /etc/code/proxy.py ]; then
 chmod +x /etc/code/proxy.py > /dev/null 2>&1;
+cp /etc/code/proxy.py /etc/code/proxyvpn.py;
+chmod +x /etc/code/proxyvpn.py > /dev/null 2>&1;
 else
 mkdir /etc/code > /dev/null 2>&1;
 wget https://github.com/egrojlive/codeerror/raw/master/pr_py.py -O /etc/code/proxy.py > /dev/null 2>&1;
