@@ -1,6 +1,6 @@
 {
   "versionCode":2,
-  "versionName":"2.97",
-  "mejoras":"**Corrección de errores#Nuevo diseño**##1.***Add Menu Revendedores Crownvpn***#2.Limite De Usuarios#3.INSTALACION PROXY PYTHON#4.Test De Velocidad###****SI FALLA LA INSTALACION DESINSTALA LA VERSION ANTERIOR****",
-  "url":"https://drive.google.com/uc?export=download&id=1KJorObXa817EpiBxUzEaG9UdupjHa0eE"
+  "versionName":"2.98",
+  "mejoras":"**Corrección de errores#Nuevo diseño**##1.***Add Menu Revendedores Crownvpn***#2.Limite De Usuarios#3.INSTALACION PROXY PYTHON SSH Y OPENVPN#4.Test De Velocidad###****SI FALLA LA INSTALACION DESINSTALA LA VERSION ANTERIOR****",
+  "url":"https://drive.google.com/file/d/1Lz-2RZjR44cN0A2fT689zc-yGmw2P5EF/view?usp=drivesdk"
 }
