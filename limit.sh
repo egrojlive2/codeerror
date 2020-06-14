@@ -3,9 +3,10 @@ mkdir -p /etc/code/limite
 userrc=$(echo $1 |sed 's/@/aa/g' |sed 's/-/k/g' |sed 's/0/a/g' |sed 's/1/b/g' |sed 's/2/c/g' |sed 's/3/d/g' |sed 's/4/e/g' |sed 's/5/f/g' |sed 's/6/g/g' |sed 's/7/h/g' |sed 's/8/i/g' |sed 's/9/j/g')
 limpcron=$(cat /etc/crontab |grep -v "#$1#")
 echo "$limpcron" > /etc/crontab
-echo "#!/bin/bash
+echo "#!/usr/bin/env bash
 function limpiar_usuarios(){
 rm /tmp/sshpid$1
+echo \$(ps -u $1 | grep sshd | awk '{print \$1}' | sed 's/ /$/g') >> /tmp/sshpid$1;
 data=\$(ps aux | grep -i dropbear | awk '{print \$2}');
 for PID in "\${data[@]}"
 do
@@ -14,7 +15,6 @@ do
                 echo \"\$PID\" >> /tmp/sshpid$1;
         fi
 done
-echo \$(ps -u $1 | grep sshd | awk '{print \$1}' | sed 's/ /$/g') >> /tmp/sshpid$1;
 
 l_tot=\$(cat /tmp/sshpid$1 |awk '{print \$1}' |wc -l);
 
