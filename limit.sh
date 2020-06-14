@@ -3,53 +3,92 @@ mkdir -p /etc/code/limite
 userrc=$(echo $1 |sed 's/@/aa/g' |sed 's/-/k/g' |sed 's/0/a/g' |sed 's/1/b/g' |sed 's/2/c/g' |sed 's/3/d/g' |sed 's/4/e/g' |sed 's/5/f/g' |sed 's/6/g/g' |sed 's/7/h/g' |sed 's/8/i/g' |sed 's/9/j/g')
 limpcron=$(cat /etc/crontab |grep -v "#$1#")
 echo "$limpcron" > /etc/crontab
-echo "#!/bin/sh
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-sleep 2.5s
-if [ \$(ps -u $1 |grep sshd |wc -l) -gt $2 ]; then ps -u $1 |grep sshd |awk '{print \$1}' > /tmp/sshpid$1; sshpid$userrc=\$(cat -n /tmp/sshpid$1 |awk '\$1 > $2 {print \$2}'); kill \$sshpid$userrc; fi
-exit
+echo "#!/bin/bash
+function limpiar_usuarios(){
+rm /tmp/sshpid$1
+data=\$(ps aux | grep -i dropbear | awk '{print \$2}');
+for PID in "\${data[@]}"
+do
+        n_USER=\$(cat /var/log/auth.log | grep -i dropbear | grep -i \"Password auth succeeded\" | grep \"dropbear\[\$PID\]\" | awk '{print \$10}' | sed \"s/'//g\");
+        if [ \"\$n_USER\" = \"$1\" ]; then
+                echo \"\$PID\" >> /tmp/sshpid$1;
+        fi
+done
+echo \$(ps -u $1 | grep sshd | awk '{print \$1}' | sed 's/ /$/g') >> /tmp/sshpid$1;
+
+l_tot=\$(cat /tmp/sshpid$1 |awk '{print \$1}' |wc -l);
+
+if [ \"\$l_tot\" -gt \"$2\" ]; then
+for pid in \$( seq $2 1 \$l_tot )
+do
+kill \$(head -n 1 /tmp/sshpid$1)
+done
+fi
+}
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+impiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+impiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
+limpiar_usuarios;
+sleep 2.5s;
 " > /etc/code/limite/$1.sh
 chmod a+x /etc/code/limite/$1.sh 2>/dev/null
 echo "*/1 * * * * root /etc/code/limite/$1.sh #$1#" >> /etc/crontab
