@@ -2,6 +2,7 @@
 echo "INSTALANDO PROXY PYTHON"
 echo "PROXY SSH 8081"
 echo "PROXY OPENVPN 8082"
+apt-get install python > /dev/null 2>&1;
 if [ -f /etc/code/proxy.py ]; then
 chmod +x /etc/code/proxy.py > /dev/null 2>&1;
 cp /etc/code/proxy.py /etc/code/proxyvpn.py;
