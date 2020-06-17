@@ -19,6 +19,7 @@ fi
 
 echo "[Unit]
 Description=SERVICIO proxy python en escucha puerto 8081
+After=network.target
 
 [Service]
 Type=ilde
@@ -29,6 +30,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
 
 echo "[Unit]
 Description=SERVICIO proxy python para OPENVPN en escucha puerto 8082
+After=network.target
 
 [Service]
 Type=ilde
