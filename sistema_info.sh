@@ -125,27 +125,27 @@ fi
 # If "you no like", delete it or replace with your own ;)
 # Print out all of the information collected using the script
 # ($local_ip)
-echo -e "<font color=\"#FFBF38\">=========:System Data:=========</font><br>
+echo -e "<font color=\"#FFBF38\">=========:DATOS DEL SISTEMA:=========</font><br>
 <font color=\"#77C500\">Hostname =</font>  $(hostname) ($(hostname --fqdn))<br>
 <font color=\"#77C500\">IPv4 Address =</font>  $remote_ip<br>
-<font color=\"#77C500\">Uptime =</font>  $machine_uptime<br>
-<font color=\"#77C500\">Time =</font>  $(date)<br>
-<font color=\"#77C500\">CPU Temp =</font>  $cur_temperature<br>
-<font color=\"#77C500\">Processes =</font>  $PROCCOUNT of $(ulimit -u) max<br>
+<font color=\"#77C500\">Tiempo Encendido =</font>  $machine_uptime<br>
+<font color=\"#77C500\">Hora =</font>  $(date)<br>
+<font color=\"#77C500\">CPU Temperatura =</font>  $cur_temperature<br>
+<font color=\"#77C500\">Procesos =</font>  $PROCCOUNT of $(ulimit -u) max<br>
 <font color=\"#77C500\">Load Averages =</font>  ${loadavg_one}, ${loadavg_five}, ${loadavg_fifteen} (1, 5, 15 min)<br>
-<font color=\"#77C500\">Distro =</font>  $distro_pretty_name ($(uname -r))<br>
+<font color=\"#77C500\">Distribucion =</font>  $distro_pretty_name ($(uname -r))<br>
 <font color=\"#77C500\">CPU =</font>  $cpu_model_name<br>
 <font color=\"#77C500\">Memory =</font>  $memory_percent (${memory_free_mb}MB Free, ${memory_used_mb}MB/${memory_available_mb}MB Used)<br>
-<font color=\"#77C500\">Swap   =</font>  $swap_percent (${swap_free_mb}MB Free, ${swap_used_mb}MB/${swap_available_mb}MB Used)<br>
-<font color=\"#77C500\">HDD Usage =</font>  $hdd_percent (${hdd_free}B Free, ${hdd_used}B/${hdd_available}B Used)<br><br>
-<font color=\"#FFBF38\">=========: User Data :=========</font><br>
-<font color=\"#77C500\">Username =</font>  $USER ($USERGROUP)<br>
-<font color=\"#77C500\">Last Login =</font>  $last_login_user from $last_login_ip<br>
-<font color=\"#77C500\">Sessions =</font>  $(who | grep -c "$USER")<br><br>
+<font color=\"#77C500\">Memoria Swap =</font>  $swap_percent (${swap_free_mb}MB Free, ${swap_used_mb}MB/${swap_available_mb}MB Used)<br>
+<font color=\"#77C500\">Disco Duro Usado=</font>  $hdd_percent (${hdd_free}B Free, ${hdd_used}B/${hdd_available}B Used)<br><br>
+<font color=\"#FFBF38\">=========: Accesos Root :=========</font><br>
+<font color=\"#77C500\">Usuario =</font>  $USER ($USERGROUP)<br>
+<font color=\"#77C500\">Ultimo Registro =</font>  $last_login_user from $last_login_ip<br>
+<font color=\"#77C500\">Sesiones Activas =</font>  $(who | grep -c "$USER")<br><br>
 
-<font color=\"#FFBF38\">=========: Helpful Information :=========</font><br>
-<font color=\"#77C500\">OpenPorts IPv4 =</font>  $OPEN_PORTS_IPV4<br>
-<font color=\"#77C500\">OpenPorts IPv6 =</font>  $OPEN_PORTS_IPV6<br><br>"
+<font color=\"#FFBF38\">=========: Puertos Activos :=========</font><br>
+<font color=\"#77C500\">Puertos IPv4 =</font>  $OPEN_PORTS_IPV4<br>
+<font color=\"#77C500\">Puertos IPv6 =</font>  $OPEN_PORTS_IPV6<br><br>"
 
 opensshport="$(netstat -ntlp | grep -i ssh | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 dropbearport="$(netstat -nlpt | grep -i dropbear | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
@@ -154,14 +154,17 @@ openvpnport="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $
 if [ -f /etc/squid3/squid.conf ];
 then
 squidport="$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}')"
-else
+else if [ -f /etc/squid/squid.conf ];
+then
 squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
+else
+squidport="No Instalado"
 fi
 if [ -f /etc/default/sslh ];
 then
 puertouniversal="$(cat /etc/default/sslh | grep -i listen | awk '{print $4}')"
 else
-puertouniversal="no configurado"
+puertouniversal="No Activado"
 fi
 echo -e "<br><font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>"
 echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"$puertouniversal
