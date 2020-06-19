@@ -156,6 +156,7 @@ if [ -f /etc/squid3/squid.conf ];
 then
     squidport="$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}')"
 elif [ -f /etc/squid/squid.conf ];
+then
     squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
 else
     squidport="No Instalado"
