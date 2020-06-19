@@ -25,6 +25,7 @@ After=network.target
 Type=ilde
 ExecStart=/usr/bin/python /etc/code/proxy.py
 User=root
+Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
 
@@ -36,6 +37,7 @@ After=network.target
 Type=ilde
 ExecStart=/usr/bin/python /etc/code/proxyvpn.py
 User=root
+Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/proxyvpnpy.service;
 sed -i "s/8081/8082/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
@@ -44,6 +46,8 @@ sed -i "s/22/4444/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
 chmod +x /etc/systemd/system/proxypy.service > /dev/null 2>&1;
 chmod +x /etc/systemd/system/proxyvpnpy.service > /dev/null 2>&1;
 systemctl daemon-reload > /dev/null 2>&1;
+systemctl enable proxypy.service > /dev/null 2>&1;
+systemctl enable proxyvpnpy.service > /dev/null 2>&1;
 systemctl restart proxypy.service > /dev/null 2>&1;
 systemctl restart proxyvpnpy.service > /dev/null 2>&1;
 rm proxy.sh > /dev/null 2>&1;
