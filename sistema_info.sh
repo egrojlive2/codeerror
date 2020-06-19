@@ -153,12 +153,13 @@ stunnel4port="$(netstat -nlpt | grep -i stunnel | grep -i 0.0.0.0 | awk '{print 
 openvpnport="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 if [ -f /etc/squid3/squid.conf ];
 then
-squidport="$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}')"
-elif [ -f /etc/squid/squid.conf ]
-squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
+    squidport="$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}')"
+elif [ -f /etc/squid/squid.conf ];
+    squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
 else
-squidport="No Instalado"
+    squidport="No Instalado"
 fi
+
 if [ -f /etc/default/sslh ];
 then
 puertouniversal="$(cat /etc/default/sslh | grep -i listen | awk '{print $4}')"
