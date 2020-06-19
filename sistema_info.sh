@@ -138,12 +138,12 @@ echo -e "<font color=\"#FFBF38\">=========:DATOS DEL SISTEMA:=========</font><br
 <font color=\"#77C500\">Memoria Ram =</font>  $memory_percent (${memory_free_mb}MB Free, ${memory_used_mb}MB/${memory_available_mb}MB Used)<br>
 <font color=\"#77C500\">Memoria Swap =</font>  $swap_percent (${swap_free_mb}MB Free, ${swap_used_mb}MB/${swap_available_mb}MB Used)<br>
 <font color=\"#77C500\">Disco Duro Usado=</font>  $hdd_percent (${hdd_free}B Free, ${hdd_used}B/${hdd_available}B Used)<br><br>
-<font color=\"#FFBF38\">=========: Accesos Root :=========</font><br>
+<font color=\"#FFBF38\">=========: ACCESO ROOT :=========</font><br>
 <font color=\"#77C500\">Usuario =</font>  $USER ($USERGROUP)<br>
 <font color=\"#77C500\">Ultimo Registro =</font>  $last_login_user from $last_login_ip<br>
 <font color=\"#77C500\">Sesiones Activas =</font>  $(who | grep -c "$USER")<br><br>
 
-<font color=\"#FFBF38\">=========: Puertos Activos :=========</font><br>
+<font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>
 <font color=\"#77C500\">Puertos IPv4 =</font>  $OPEN_PORTS_IPV4<br>
 <font color=\"#77C500\">Puertos IPv6 =</font>  $OPEN_PORTS_IPV6<br><br>"
 
@@ -168,7 +168,7 @@ puertouniversal="$(cat /etc/default/sslh | grep -i listen | awk '{print $4}')"
 else
 puertouniversal="No Activado"
 fi
-echo -e "<br><font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>"
+echo -e "<br><font color=\"#FFBF38\">=========: SERVICIOS ACTIVOS :=========</font><br>"
 echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"$puertouniversal
 echo -e "<br><font color=\"#77C500\">         Port OpenSSH    :  </font>"$opensshport
 echo -e "<br><font color=\"#77C500\">         Port Dropbear   :  </font>"$dropbearport
