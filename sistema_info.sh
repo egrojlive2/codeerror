@@ -154,7 +154,7 @@ openvpnport="$(netstat -nlpt | grep -i openvpn | grep -i 0.0.0.0 | awk '{print $
 if [ -f /etc/squid3/squid.conf ];
 then
 squidport="$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}')"
-else if [ -f /etc/squid/squid.conf ];
+elif [ -f /etc/squid/squid.conf ];
 then
 squidport="$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}')"
 else
