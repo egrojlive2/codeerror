@@ -135,7 +135,7 @@ echo -e "<font color=\"#FFBF38\">=========:DATOS DEL SISTEMA:=========</font><br
 <font color=\"#77C500\">Load Averages =</font>  ${loadavg_one}, ${loadavg_five}, ${loadavg_fifteen} (1, 5, 15 min)<br>
 <font color=\"#77C500\">Distribucion =</font>  $distro_pretty_name ($(uname -r))<br>
 <font color=\"#77C500\">CPU =</font>  $cpu_model_name<br>
-<font color=\"#77C500\">Memory =</font>  $memory_percent (${memory_free_mb}MB Free, ${memory_used_mb}MB/${memory_available_mb}MB Used)<br>
+<font color=\"#77C500\">Memoria Ram =</font>  $memory_percent (${memory_free_mb}MB Free, ${memory_used_mb}MB/${memory_available_mb}MB Used)<br>
 <font color=\"#77C500\">Memoria Swap =</font>  $swap_percent (${swap_free_mb}MB Free, ${swap_used_mb}MB/${swap_available_mb}MB Used)<br>
 <font color=\"#77C500\">Disco Duro Usado=</font>  $hdd_percent (${hdd_free}B Free, ${hdd_used}B/${hdd_available}B Used)<br><br>
 <font color=\"#FFBF38\">=========: Accesos Root :=========</font><br>
