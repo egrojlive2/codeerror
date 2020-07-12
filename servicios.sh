@@ -13,21 +13,24 @@ function ssl_info(){
 function squid_info(){
 if [ -f /etc/squid/squid.conf ]; then
 	puertosquid=$(cat /etc/squid/squid.conf | grep -i accept | awk '{print $2}' | sort)
-elif [ -f /etc/squid3/squid.conf ]; then
-			puertosquid=$(cat /etc/squid3/squid.conf | grep -i accept | awk '{print $2}' | sort)
-else
-	echo "El Servicio Squid No Se Encuentra Instalado"
-	return
-fi
-	
 for p2 in $puertosquid
 do
 echo "puerto $p2"
 	done
+elif [ -f /etc/squid3/squid.conf ]; then
+			puertosquid=$(cat /etc/squid3/squid.conf | grep -i accept | awk '{print $2}' | sort)
+for p2 in $puertosquid
+do
+echo "puerto $p2"
+	done
+else
+	echo "El Servicio Squid No Se Encuentra Instalado"
+	return
+fi
 }
 function dropbear_info(){
-	if [[ -f /etc/default/dropbear ]]; then
-	puertodropbear=$(cat /etc/deault/dropbear | grep -i DROPBEAR_PORT)
+	if [ -f /etc/default/dropbear ]; then
+	puertodropbear=$(cat /etc/default/dropbear | grep -i DROPBEAR_PORT)
 echo "$puertodropbear"
 else
 	echo "El Servicio Dropbear No Se Encuentra Instalado"
