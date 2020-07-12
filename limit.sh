@@ -24,7 +24,12 @@ do
 kill \$(head -n 1 /tmp/sshpid$1)
 done
 fi
+unset data
+unset n_USER
+unset l_tot
 }
+unset userrc
+unset limpcron
 limpiar_usuarios;
 sleep 2.5s;
 limpiar_usuarios;
