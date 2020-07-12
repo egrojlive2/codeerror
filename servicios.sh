@@ -4,6 +4,7 @@ function ssl_info(){
     puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
     for p1 in $puertosssl
     do
+    	echo "Servicio ssl Instalado"
     echo "puerto $p1"
 	done
 	else
@@ -17,6 +18,7 @@ if [ -f /etc/squid/squid.conf ]; then
 	puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
 for p2 in $puertosquid
 do
+	echo "Servicio squid Instalado"
 echo "puerto $p2"
 	done
 elif [ -f /etc/squid3/squid.conf ]; then
@@ -35,6 +37,7 @@ unset puertosquid
 function dropbear_info(){
 	if [ -f /etc/default/dropbear ]; then
 	puertodropbear=$(cat /etc/default/dropbear | grep -i DROPBEAR_PORT)
+	echo "Servicio Dropbear Instalado"
 echo "$puertodropbear"
 else
 	echo "El Servicio Dropbear No Se Encuentra Instalado"
