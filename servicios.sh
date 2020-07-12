@@ -9,6 +9,8 @@ function ssl_info(){
 	else
 		echo "Stunnel No Se Encuentra Instalado"
     fi
+    unset puertosssl
+    unset p1
 }
 function squid_info(){
 if [ -f /etc/squid/squid.conf ]; then
@@ -27,6 +29,8 @@ else
 	echo "El Servicio Squid No Se Encuentra Instalado"
 	return
 fi
+unset puertosquid
+    unset p2
 }
 function dropbear_info(){
 	if [ -f /etc/default/dropbear ]; then
@@ -35,6 +39,7 @@ echo "$puertodropbear"
 else
 	echo "El Servicio Dropbear No Se Encuentra Instalado"
 fi
+unset puertodropbear
 }
 if [ $1 == "ssl" ]; then
     ssl_info
