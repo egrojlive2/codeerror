@@ -12,13 +12,13 @@ function ssl_info(){
 }
 function squid_info(){
 if [ -f /etc/squid/squid.conf ]; then
-	puertosquid=$(cat /etc/squid/squid.conf | grep -i accept | awk '{print $2}' | sort)
+	puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
 for p2 in $puertosquid
 do
 echo "puerto $p2"
 	done
 elif [ -f /etc/squid3/squid.conf ]; then
-			puertosquid=$(cat /etc/squid3/squid.conf | grep -i accept | awk '{print $2}' | sort)
+			puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
 for p2 in $puertosquid
 do
 echo "puerto $p2"
