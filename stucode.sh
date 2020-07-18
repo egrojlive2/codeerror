@@ -6,11 +6,11 @@ echo "No Se Recibio La Ip Y Puerto"
 exit 0;
 fi
 if [ -f /etc/stunnel/stunnel.conf ]; then
-echo "echo \"[STUNNELCODE]
+echo "[STUNNELCODE]
 client = yes
 cert = /etc/stunnel/stunnel.pem
 accept = 127.0.0.1:442
-connect = $1\" > /etc/code/stunnelcode.conf";
+connect = $1" > /etc/code/stunnelcode.conf;
 mkdir /etc/code > /dev/null 2>&1;
 echo "[Unit]
 Description=SERVICIO Stunnel Code Redirect Puerto 442
