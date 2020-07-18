@@ -6,7 +6,7 @@ echo "No Se Recibio La Ip Y Puerto"
 exit 0;
 fi
 if [ -f /etc/stunnel/stunnel.conf ]; then
-echo "[STUNNELCODE]
+echo "[STUNNELCOD]
 client = yes
 cert = /etc/stunnel/stunnel.pem
 accept = 127.0.0.1:442
