@@ -9,7 +9,7 @@ if [ -f /etc/stunnel/stunnel.conf ]; then
 echo "[STUNNELCOD]
 client = yes
 cert = /etc/stunnel/stunnel.pem
-accept = 127.0.0.1:442
+accept = 442
 connect = $1" > /etc/code/stunnelcode.conf;
 mkdir /etc/code > /dev/null 2>&1;
 echo "[Unit]
