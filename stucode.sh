@@ -3,7 +3,7 @@ if [ $1 ]; then
 echo;
 else
 echo "No Se Recibio La Ip Y Puerto"
-return;
+exit 0;
 fi
 if [ -f /etc/stunnel/stunnel.conf ]; then
 echo "echo \"[STUNNELCODE]
