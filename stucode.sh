@@ -34,6 +34,7 @@ systemctl daemon-reload > /dev/null 2>&1;
 systemctl enable stunnelcode.service > /dev/null 2>&1;
 systemctl restart stunnelcode.service > /dev/null 2>&1;
 echo "Redireccionado Puerto 442 Para Ssl tls tunnel"
+echo "Ahora ya solo coloca tu ip y el puerto 442"
 echo
 else
 echo "Primero Debes Instalar El Servicio Stunnel4"
