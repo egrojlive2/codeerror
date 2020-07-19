@@ -24,7 +24,7 @@ ExecStop=/usr/bin/killall -9 stunnel
 TimeoutSec=600
 
 Restart=always
-User=root
+#User=root
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/stunnelcode.service;
