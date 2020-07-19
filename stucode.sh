@@ -8,7 +8,7 @@ fi
 if [ -f /etc/stunnel/stunnel.conf ]; then
 mkdir /etc/code > /dev/null 2>&1;
 echo "[STUNNELCOD]
-client = yes
+client = no
 cert = /etc/stunnel/stunnel.pem
 accept = 442
 connect = $1" > /etc/code/stunnelcode.conf;
