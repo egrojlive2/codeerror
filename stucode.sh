@@ -8,8 +8,6 @@ echo "No Se Recibio La Ip Y Puerto"
 exit 0;
 fi
 if [ $puerto ]; then
-echo $puerto;
-echo;
 escuchar=$puerto;
 else
 escuchar=442;
