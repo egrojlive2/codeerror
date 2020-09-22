@@ -6,6 +6,8 @@ echo "No Se Recibio La Ip Y Puerto"
 exit 0;
 fi
 if [ $2 ]; then
+echo $2;
+echo;
 escuchar=$2;
 else
 escuchar=442;
