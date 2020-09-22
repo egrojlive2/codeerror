@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
-if [ $1 ]; then
+ip=$1;
+puerto=$2;
+if [ $ip ]; then
 echo;
 else
 echo "No Se Recibio La Ip Y Puerto"
 exit 0;
 fi
-if [ $2 ]; then
-echo $2;
+if [ $puerto ]; then
+echo $puerto;
 echo;
-escuchar=$2;
+escuchar=$puerto;
 else
 escuchar=442;
 fi
@@ -17,10 +19,10 @@ mkdir /etc/code > /dev/null 2>&1;
 echo "[STUNNELCOD]
 client = no
 cert = /etc/stunnel/stunnel.pem
-accept = $escuchar
+accept = $puerto
 connect = $1" > /etc/code/stunnelcode.conf;
 echo "[Unit]
-Description=SERVICIO Stunnel Code Redirect Puerto $escuchar
+Description=SERVICIO Stunnel Code Redirect Puerto $puerto
 After=network.target
 After=syslog.target
 
@@ -42,8 +44,8 @@ systemctl enable stunnelcode.service > /dev/null 2>&1;
 systemctl restart stunnelcode.service > /dev/null 2>&1;
 service stunnel4 restart > /dev/null 2>&1;
 service stunnel4 restart > /dev/null 2>&1;
-echo "Redireccionado Puerto $escuchar Para Ssl tls tunnel"
-echo "Ahora ya solo coloca tu ip y el puerto $escuchar"
+echo "Redireccionado Puerto $puerto Para Ssl tls tunnel"
+echo "Ahora ya solo coloca tu ip y el puerto $puerto"
 echo
 else
 echo "Primero Debes Instalar El Servicio Stunnel4"
