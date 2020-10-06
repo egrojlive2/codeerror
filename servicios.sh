@@ -4,9 +4,9 @@ function ssl_info(){
     puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
     inform=$(service stunnel4 status);
     if [[ $inform =~ "Active: active" ]]; then
-    echo "Servicio stunnel Corriendo Correctamente"
+    echo "El Servicio stunnel esta Corriendo Correctamente\n"
     else
-    echo "Error En El Servicio Stunnel"
+    echo "Hay Un Error El Servicio"
     fi
     for p1 in $puertosssl
     do
@@ -23,9 +23,9 @@ if [ -f /etc/squid/squid.conf ]; then
         puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
 inform=$(service squid status);
     if [[ $inform =~ "Active: active" ]]; then
-    echo "Servicio squid Corriendo Correctamente"
+    echo "El Servicio squid Esta Corriendo Correctamente\n"
     else
-    echo "Error En El Servicio squid"
+    echo "Hay Un Error En El Servicio\n"
     fi
 for p2 in $puertosquid
 do
@@ -35,9 +35,9 @@ elif [ -f /etc/squid3/squid.conf ]; then
                         puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
                         inform=$(service squid3 status);
     if [[ $inform =~ "Active: active" ]]; then
-    echo "Servicio squid Corriendo Correctamente"
+    echo "El Servicio squid Esta Corriendo Correctamente"
     else
-    echo "Error En El Servicio Squid"
+    echo "Hay Un Error En El Servicio"
     fi
 for p2 in $puertosquid
 do
