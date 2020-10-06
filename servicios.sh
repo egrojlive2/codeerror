@@ -1,56 +1,76 @@
 #!/bin/bash
 function ssl_info(){
-	if [ -f /etc/stunnel/stunnel.conf ]; then
+        if [ -f /etc/stunnel/stunnel.conf ]; then
     puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
-    echo "Servicio ssl Instalado"
+    inform=$(service stunnel4 status);
+    if [[ $inform =~ "Active: active" ]]; then
+    echo "Servicio stunnel Corriendo Correctamente"
+    else
+    echo "Error En El Servicio Stunnel"
+    fi
     for p1 in $puertosssl
     do
     echo "puerto $p1"
-	done
-	else
-		echo "Stunnel No Se Encuentra Instalado"
+        done
+        else
+                echo "Stunnel No Se Encuentra Instalado"
     fi
     unset puertosssl
     unset p1
 }
 function squid_info(){
 if [ -f /etc/squid/squid.conf ]; then
-	puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
-echo "Servicio squid Instalado"
+        puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
+inform=$(service squid status);
+    if [[ $inform =~ "Active: active" ]]; then
+    echo "Servicio squid Corriendo Correctamente"
+    else
+    echo "Error En El Servicio squid"
+    fi
 for p2 in $puertosquid
 do
 echo "puerto $p2"
-	done
+        done
 elif [ -f /etc/squid3/squid.conf ]; then
-			puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
-			echo "Servicio squid Instalado"
+                        puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
+                        inform=$(service squid3 status);
+    if [[ $inform =~ "Active: active" ]]; then
+    echo "Servicio squid Corriendo Correctamente"
+    else
+    echo "Error En El Servicio Squid"
+    fi
 for p2 in $puertosquid
 do
 echo "puerto $p2"
-	done
+        done
 else
-	echo "El Servicio Squid No Se Encuentra Instalado"
-	return
+        echo "El Servicio Squid No Se Encuentra Instalado"
+        return
 fi
 unset puertosquid
     unset p2
 }
 function dropbear_info(){
-	if [ -f /etc/default/dropbear ]; then
-	puertodropbear=$(cat /etc/default/dropbear | grep -i DROPBEAR_PORT)
-	echo "Servicio Dropbear Instalado"
+        if [ -f /etc/default/dropbear ]; then
+        puertodropbear=$(cat /etc/default/dropbear | grep -i DROPBEAR_PORT)
+        inform=$(service dropbear status);
+    if [[ $inform =~ "Active: active" ]]; then
+    echo "Servicio dropbear Corriendo Correctamente"
+    else
+    echo "Error En El Servicio dropbear"
+    fi
 echo "$puertodropbear"
 else
-	echo "El Servicio Dropbear No Se Encuentra Instalado"
+        echo "El Servicio Dropbear No Se Encuentra Instalado"
 fi
 unset puertodropbear
 }
 if [ $1 == "ssl" ]; then
     ssl_info
 elif [ $1 == "squid" ]; then
-	squid_info
+        squid_info
 elif [ $1 == "dropbear" ]; then
-	dropbear_info
+        dropbear_info
 else
-	echo "El Comando Es Incorrecto"
+        echo "El Comando Es Incorrecto"
 fi
