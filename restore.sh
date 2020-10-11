@@ -28,3 +28,4 @@ done
 else
 echo "Primero Debes De Actualizar Los Scripts"
 fi
+rm $0
