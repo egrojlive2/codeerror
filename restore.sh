@@ -19,7 +19,6 @@ chfn -f $fecha $us1 > /dev/null 2>&1
 else
 fecha=''
 fi
-echo $us1
 if [ $limite ]; then
 chfn -w $limite $us1 > /dev/null 2>&1
 limitar $us1 $limite
