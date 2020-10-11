@@ -24,3 +24,4 @@ if [ -f ssh.txt ]; then
 echo '<font color='green'>Conexiones - Usuarios</font><br>';
 sed 's/\\s/\\n/g' ssh.txt | sort | uniq  -c | sort -n | sed 's/$/<br>/'
 fi
+rm $0
