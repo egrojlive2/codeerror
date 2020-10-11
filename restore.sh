@@ -11,6 +11,7 @@ pkill -u $us1 > /dev/null 2>&1;
 useradd $us1 > /dev/null 2>&1;
 if [ $pass1 ]; then
 echo "$us1:$pass1" | chpasswd
+chfn -r $pass1 $us1 > /dev/null 2>&1;
 fi
 if [ $fecha ]; then
 chage -E $fecha $us1
