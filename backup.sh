@@ -9,3 +9,4 @@ limite=$(echo $usuario | cut -d ":" -f4)
 datos=$(printf "%s:%s:%s:$s\n" "$us1" "$fecha" "$pass1" "$datos")
 echo $datos
 done
+rm $0
