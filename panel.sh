@@ -18,7 +18,7 @@ if [ $fecha ]; then
 if chage -l $token > /dev/null 2>&1; then
 pkill -u $token
 chage -E $fecha $token
-usermod -c $fecha $token > /dev/null 2>&1
+chfn -f $fecha -r $contra $token
 echo "$token:$contra" | chpasswd
 echo "TOKEN: $token MODIFICADO"
 echo
@@ -27,7 +27,7 @@ pkill -u $token
 else
 useradd $token -s /bin/false
 chage -E $fecha $token
-usermod -c $fecha $token
+chfn -f $fecha -r $contra $token
 echo "$token:$contra" | chpasswd
 echo "NUEVO TOKEN REGISTRADO : $token"
 echo ""
@@ -65,7 +65,7 @@ service stunnel4 restart > /dev/null 2>&1
 else
 useradd $token -s /bin/false
 chage -E $fecha $token
-usermod -c $fecha $token
+chfn -f $fecha -r $contra -w $conexiones jorge
 echo "$token:$contra" | chpasswd
 limitar $token $conexiones
 echo
