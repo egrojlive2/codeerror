@@ -53,7 +53,7 @@ fi
 if chage -l $token > /dev/null 2>&1; then
 pkill -u $token
 chage -E $fecha $token
-chfn -f $fecha -r $contra -w $conexiones jorge
+chfn -f $fecha -r $contra -w $conexiones $token
 limitar $token $conexiones
 echo
 echo "$token:$contra" | chpasswd
@@ -65,7 +65,7 @@ service stunnel4 restart > /dev/null 2>&1
 else
 useradd $token -s /bin/false
 chage -E $fecha $token
-chfn -f $fecha -r $contra -w $conexiones jorge
+chfn -f $fecha -r $contra -w $conexiones $token
 echo "$token:$contra" | chpasswd
 limitar $token $conexiones
 echo
