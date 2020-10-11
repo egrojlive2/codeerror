@@ -53,7 +53,7 @@ fi
 if chage -l $token > /dev/null 2>&1; then
 pkill -u $token
 chage -E $fecha $token
-usermod -c $fecha $token > /dev/null 2>&1
+chfn -f $fecha -r $contra -w $conexiones jorge
 limitar $token $conexiones
 echo
 echo "$token:$contra" | chpasswd
