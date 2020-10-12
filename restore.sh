@@ -6,7 +6,7 @@ do
 us1=$(echo $usuario | cut -d ":" -f1)
 fecha=$(echo $usuario | cut -d ":" -f2)
 pass1=$(echo $usuario | cut -d ":" -f3)
-limite=$(echo $usuario | cut -d ":" -f6)
+limite=$(echo $usuario | cut -d ":" -f5)
 pkill -u $us1 > /dev/null 2>&1;
 useradd $us1 > /dev/null 2>&1;
 if [ $pass1 ]; then
