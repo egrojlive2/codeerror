@@ -1,5 +1,4 @@
 #!/bin/bash
-#panel codeerror
 lista=$1
 if [ -d /etc/code/limite ]; then
 for usuario in $lista;
