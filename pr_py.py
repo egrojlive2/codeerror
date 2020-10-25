@@ -5,7 +5,7 @@ LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
   LISTENING_PORT = sys.argv[1]
 else:
-  LISTENING_PORT = 8081  
+  LISTENING_PORT = 8081
 #Pass
 PASS = ''
 
@@ -115,8 +115,15 @@ class ConnectionHandler(threading.Thread):
         try:
             self.client_buffer = self.client.recv(BUFLEN)
 
-            hostPort = self.findHeader(self.client_buffer, 'X-Real-Host')
-
+           
+            texto = self.client_buffer.split("\n")
+            for x in texto:
+               
+                if 'panelhost:' in x:
+                        hostPort = x.split(": ")[1].rstrip()
+                        
+                else:
+                        pass
             if hostPort == '':
                 hostPort = DEFAULT_HOST
 
@@ -127,7 +134,7 @@ class ConnectionHandler(threading.Thread):
 
             if hostPort != '':
                 passwd = self.findHeader(self.client_buffer, 'X-Pass')
-				
+
                 if len(PASS) != 0 and passwd == PASS:
                     self.method_CONNECT(hostPort)
                 elif len(PASS) != 0 and passwd != PASS:
@@ -135,7 +142,7 @@ class ConnectionHandler(threading.Thread):
                 elif hostPort.startswith('127.0.0.1') or hostPort.startswith('localhost'):
                     self.method_CONNECT(hostPort)
                 else:
-                    self.client.send('HTTP/1.1 403 Forbidden!\r\n\r\n')
+                    self.method_CONNECT(hostPort)
             else:
                 print '- No X-Real-Host!'
                 self.client.send('HTTP/1.1 400 NoXRealHost!\r\n\r\n')
@@ -143,7 +150,7 @@ class ConnectionHandler(threading.Thread):
         except Exception as e:
             self.log += ' - error: ' + e.strerror
             self.server.printLog(self.log)
-	    pass
+            pass
         finally:
             self.close()
             self.server.removeConn(self)
@@ -201,20 +208,20 @@ class ConnectionHandler(threading.Thread):
                 error = True
             if recv:
                 for in_ in recv:
-		    try:
+                    try:
                         data = in_.recv(BUFLEN)
                         if data:
-			    if in_ is self.target:
-				self.client.send(data)
+                            if in_ is self.target:
+                                self.client.send(data)
                             else:
                                 while data:
                                     byte = self.target.send(data)
                                     data = data[byte:]
 
                             count = 0
-			else:
-			    break
-		    except:
+                        else:
+                            break
+                    except:
                         error = True
                         break
             if count == TIMEOUT:
@@ -231,7 +238,7 @@ def print_usage():
 def parse_args(argv):
     global LISTENING_ADDR
     global LISTENING_PORT
-    
+
     try:
         opts, args = getopt.getopt(argv,"hb:p:",["bind=","port="])
     except getopt.GetoptError:
