@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-echo "INSTALANDO PROXY PYTHON"
-echo "PROXY SSH 8081"
-echo "PROXY OPENVPN 8082"
+#echo "INSTALANDO PROXY PYTHON"
+#echo "PROXY SSH 8081"
+#echo "PROXY OPENVPN 8082"
 mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
 if [ -f /etc/code/proxy.py ]; then
@@ -21,7 +21,7 @@ fi
 #service sslh restart > /dev/null 2>&1;
 
 echo "[Unit]
-Description=SERVICIO proxy python en escucha puerto 8081
+Description=SERVICIO proxy python en escucha puerto 8080
 After=network.target
 
 [Service]
@@ -33,7 +33,7 @@ Restart=on-failure
 WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
 
 echo "[Unit]
-Description=SERVICIO proxy python para OPENVPN en escucha puerto 8082
+Description=SERVICIO proxy python para OPENVPN en escucha puerto 3128
 After=network.target
 
 [Service]
@@ -43,7 +43,7 @@ User=root
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/proxyvpnpy.service;
-sed -i "s/8081/8082/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
+sed -i "s/8080/3128/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
 sed -i "s/22/4444/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
 
 chmod +x /etc/systemd/system/proxypy.service > /dev/null 2>&1;
