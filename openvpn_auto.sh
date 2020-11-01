@@ -3,10 +3,18 @@
 #if [[ $proveedor == *Amazon* ]]; then
 #sudo su
 #fi
+#if [[ $proveedor == *Microsoft* ]]; then
+#sudo su
+#fi
 sistema_operativo=$(cat /etc/os-release)
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
-
+Plugin_autent='';
+if [ -f /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so ]; then
+Plugin_autent='/usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so';
+else
+Plugin_autent='/usr/lib/openvpn/openvpn-plugin-auth-pam.so';
+fi
 
 function ubuntu_14(){
 echo "INSTALANDO OPENVPN EN UBUNTU 14...\n"
@@ -249,7 +257,7 @@ user nobody
 group nogroup
 client-cert-not-required
 username-as-common-name
-plugin /usr/lib/openvpn/openvpn-plugin-auth-pam.so login
+plugin $Plugin_autent login
 sndbuf 0
 rcvbuf 0
 push \"redirect-gateway def1 bypass-dhcp\"
@@ -514,7 +522,7 @@ user nobody
 group nogroup
 client-cert-not-required
 username-as-common-name
-plugin /usr/lib/x86_64-linux-gnu/openvpn/plugins/openvpn-plugin-auth-pam.so login
+plugin $Plugin_autent login
 sndbuf 0
 rcvbuf 0
 push \"redirect-gateway def1 bypass-dhcp\"
@@ -631,4 +639,3 @@ debian
 else
 echo "este script no es compatible con este sistema operativo\n" $sistema_operativo
 fi
-
