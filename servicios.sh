@@ -1,7 +1,8 @@
 #!/bin/bash
 function ssl_info(){
-        if [ -f /etc/stunnel/stunnel.conf ]; then
-    puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
+        if [ -f /etc/code/proxy.py ]; then
+    #puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
+    puertosssl='8080 3128'
     inform=$(service stunnel4 status);
     if [[ $inform =~ "Active: active" ]]; then
     echo "El Servicio stunnel esta Corriendo Correctamente\n"
@@ -21,30 +22,30 @@ function ssl_info(){
 function squid_info(){
 if [ -f /etc/squid/squid.conf ]; then
         puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
-inform=$(service squid status);
+inform=$(systemctl status proxypy.service);
     if [[ $inform =~ "Active: active" ]]; then
-    echo "El Servicio squid Esta Corriendo Correctamente\n"
+    echo "El Servicio Proxy tcp Esta Corriendo Correctamente\n"
     else
     echo "Hay Un Error En El Servicio\n"
     fi
 for p2 in $puertosquid
 do
 echo "puerto $p2"
-        done
+done
 elif [ -f /etc/squid3/squid.conf ]; then
-                        puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
-                        inform=$(service squid3 status);
-    if [[ $inform =~ "Active: active" ]]; then
-    echo "El Servicio squid Esta Corriendo Correctamente"
-    else
-    echo "Hay Un Error En El Servicio"
-    fi
+puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
+inform=$(service squid3 status);
+if [[ $inform =~ "Active: active" ]]; then
+echo "El Servicio squid Esta Corriendo Correctamente"
+else
+echo "Hay Un Error En El Servicio"
+fi
 for p2 in $puertosquid
 do
 echo "puerto $p2"
-        done
+done
 else
-        echo "El Servicio Squid No Se Encuentra Instalado"
+        echo "El Servicio Proxy tcp No Se Encuentra Instalado"
         return
 fi
 unset puertosquid
