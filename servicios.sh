@@ -46,7 +46,7 @@ do
 echo "puerto $p2"
 done
 else
-        echo "El Servicio Proxy squid No Se Encuentra Instalado"
+echo "El Servicio Proxy squid No Se Encuentra Instalado"
 if [ -f /etc/code/proxy.py ]; then
 echo
 echo "Proxy Tcp Instalado en Puertos 8080 y 3128"
