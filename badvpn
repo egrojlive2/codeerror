@@ -11,13 +11,11 @@ fi
 }
 function instalar(){
 echo "#!/bin/bash
-if [ "'$1'" == start ];
-then
-badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 10 > /dev/null &
+if [ "'$1'" == start ]; then
+badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 10 > /dev/null
 echo 'Badvpn ejecutandose en puerto 7300'
 fi
-if [ "'$1'" == stop ]
-then
+if [ "'$1'" == stop ]; then
 badvpnpid="'$(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
 kill -9 "'"$badvpnpid" >/dev/null 2>/dev/null
 kill $badvpnpid > /dev/null 2> /dev/null
@@ -25,7 +23,7 @@ kill "$badvpnpid" > /dev/null 2>/dev/null''
 kill $(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
 killall badvpn-udpgw
 fi" > /bin/badvpn
-chmod +x /bin/badvpn
+chmod 777 /bin/badvpn
 echo -e "\033[1;31m           Instalador Badvpn\n\033[1;37mInstalando badvpn...\033[0m"
 apt-get update >/dev/null 2>/dev/null
 apt-get install -y gcc >/dev/null 2>/dev/null
@@ -34,7 +32,8 @@ apt-get install -y g++ >/dev/null 2>/dev/null
 apt-get install -y openssl >/dev/null 2>/dev/null
 apt-get install -y build-essential >/dev/null 2>/dev/null
 apt-get install -y cmake >/dev/null 2>/dev/null
-echo -e "\033[1;37mDescargando Badvpn"; cd
+echo -e "\033[1;37mDescargando Badvpn";
+cd
 wget https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/badvpn/badvpn-1.999.128.tar.bz2 -o /dev/null
 #wget https://www.dropbox.com/s/bc5crnb77ban51i/badvpn-1.999.128.tar.bz2 -o /dev/null
 echo -e "Descomprimiendo Badvpn"
@@ -81,8 +80,8 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/badvpn.service
 
-chmod +x /etc/code/badvpn.sh
-chmod +x /etc/systemd/system/badvpn.service
+chmod 777 /etc/code/badvpn.sh
+chmod 777 /etc/systemd/system/badvpn.service
 systemctl daemon-reload > /dev/null 2>&1
 systemctl enable badvpn.service > /dev/null 2>&1
 systemctl start badvpn.service > /dev/null 2>&1
