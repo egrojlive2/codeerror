@@ -1,8 +1,8 @@
 #!/bin/bash
 function ssl_info(){
         if [ -f /etc/code/proxy.py ]; then
-    #puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
-    puertosssl='8080 3128'
+    puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
+    #puertosssl='8080 3128'
     inform=$(service stunnel4 status);
     if [[ $inform =~ "Active: active" ]]; then
     echo "El Servicio stunnel esta Corriendo Correctamente\n"
