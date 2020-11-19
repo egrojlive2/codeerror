@@ -5,7 +5,8 @@ function ssl_info(){
     #puertosssl='8080 3128'
     inform=$(service stunnel4 status);
     if [[ $inform =~ "Active: active" ]]; then
-    echo "El Servicio stunnel esta Corriendo Correctamente\n"
+    echo "El Servicio stunnel esta Corriendo Correctamente"
+    echo
     else
     echo "Hay Un Error El Servicio"
     fi
@@ -45,7 +46,12 @@ do
 echo "puerto $p2"
 done
 else
-        echo "El Servicio Proxy tcp No Se Encuentra Instalado"
+        echo "El Servicio Proxy squid No Se Encuentra Instalado"
+if [ -f /etc/code/proxy.py ]; then
+echo "Proxy Tcp Instalado"
+else
+echo "proxy Tcp no Instalado"
+fi
         return
 fi
 unset puertosquid
