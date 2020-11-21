@@ -63,7 +63,7 @@ else
 fi
 
 # Check and format the open ports on the machine
-OPEN_PORTS_IPV4=(netstat -lpnt | awk 'NR>2{print $4,$7}' | grep -E '0.0.0.0:' | sed 's/.*://' | sort -n | uniq | sed 's#/# <br>#' | awk '{print $3,$1,$4}' | sed 's/sslh/P. Universal /g' | sort -n) 
+OPEN_PORTS_IPV4=$(netstat -lpnt | awk 'NR>2{print $4,$7}' | grep -E '0.0.0.0:' | sed 's/.*://' | sort -n | uniq | sed 's#/# <br>#' | awk '{print $3,$1,$4}' | sed 's/sslh/p. Universal /g' | sort -n) 
 #OPEN_PORTS_IPV4=$(netstat -lnt | awk 'NR>2{print $4}' | grep -E '0.0.0.0:' | sed 's/.*://' | sort -n | uniq | awk -vORS=, '{print $1}' | sed 's/,$/\n/')
 OPEN_PORTS_IPV6=$(netstat -lnt | awk 'NR>2{print $4}' | grep -E ':::' | sed 's/.*://' | sort -n | uniq | awk -vORS=, '{print $1}' | sed 's/,$/\n/')
 
