@@ -63,7 +63,8 @@ else
 fi
 
 # Check and format the open ports on the machine
-OPEN_PORTS_IPV4=$(netstat -lnt | awk 'NR>2{print $4}' | grep -E '0.0.0.0:' | sed 's/.*://' | sort -n | uniq | awk -vORS=, '{print $1}' | sed 's/,$/\n/')
+OPEN_PORTS_IPV4=(netstat -lpnt | awk 'NR>2{print $4,$7}' | grep -E '0.0.0.0:' | sed 's/.*://' | sort -n | uniq | sed 's#/# <br>#' | awk '{print $3,$1,$4}' | sed 's/sslh/P. Universal /g' | sort -n) 
+#OPEN_PORTS_IPV4=$(netstat -lnt | awk 'NR>2{print $4}' | grep -E '0.0.0.0:' | sed 's/.*://' | sort -n | uniq | awk -vORS=, '{print $1}' | sed 's/,$/\n/')
 OPEN_PORTS_IPV6=$(netstat -lnt | awk 'NR>2{print $4}' | grep -E ':::' | sed 's/.*://' | sort -n | uniq | awk -vORS=, '{print $1}' | sed 's/,$/\n/')
 
 # Get the list of processes and sort them by most mem usage and most cpu usage
@@ -145,7 +146,7 @@ echo -e "<font color=\"#FFBF38\">=========:DATOS DEL SISTEMA:=========</font><br
 
 <font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>
 <font color=\"#77C500\">Puertos IPv4 =</font>  $OPEN_PORTS_IPV4<br>
-<font color=\"#77C500\">Puertos IPv6 =</font>  $OPEN_PORTS_IPV6<br><br>"
+<font color=\"#77C500\">Puertos IPv6 =</font>  $OPEN_PORTS_IPV6<br>"
 
 opensshport="$(netstat -ntlp | grep -i ssh | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 dropbearport="$(netstat -nlpt | grep -i dropbear | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
@@ -168,10 +169,10 @@ puertouniversal="$(cat /etc/default/sslh | grep -i listen | awk '{print $4}')"
 else
 puertouniversal="No Activado"
 fi
-echo -e "<br><font color=\"#FFBF38\">=========: SERVICIOS ACTIVOS :=========</font><br>"
-echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"$puertouniversal
-echo -e "<br><font color=\"#77C500\">         Port OpenSSH    :  </font>"$opensshport
-echo -e "<br><font color=\"#77C500\">         Port Dropbear   :  </font>"$dropbearport
-echo -e "<br><font color=\"#77C500\">         Port SSL        :  </font>"$stunnel4port
-echo -e "<br><font color=\"#77C500\">         Port Squid      :  </font>"$squidport
-echo -e "<br><font color=\"#77C500\">         Port OpenVPN    :  </font>"$openvpnport
+#echo -e "<br><font color=\"#FFBF38\">=========: SERVICIOS ACTIVOS :=========</font><br>"
+#echo -e "<br><font color=\"#77C500\">         Port 443        :  </font>"$puertouniversal
+#echo -e "<br><font color=\"#77C500\">         Port OpenSSH    :  </font>"$opensshport
+#echo -e "<br><font color=\"#77C500\">         Port Dropbear   :  </font>"$dropbearport
+#echo -e "<br><font color=\"#77C500\">         Port SSL        :  </font>"$stunnel4port
+#echo -e "<br><font color=\"#77C500\">         Port Squid      :  </font>"$squidport
+#echo -e "<br><font color=\"#77C500\">         Port OpenVPN    :  </font>"$openvpnport
