@@ -128,7 +128,7 @@ fi
 # ($local_ip)
 echo -e "<font color=\"#FFBF38\">=========:DATOS DEL SISTEMA:=========</font><br>
 <font color=\"#77C500\">Hostname =</font>  $(hostname) ($(hostname --fqdn))<br>
-<font color=\"#77C500\">IPv4 Address =</font>  $remote_ip<br>
+<font color=\"#77C500\">Ip-IPv4 =</font>  $remote_ip<br>
 <font color=\"#77C500\">Tiempo Encendido =</font>  $machine_uptime<br>
 <font color=\"#77C500\">Hora =</font>  $(date)<br>
 <font color=\"#77C500\">CPU Temperatura =</font>  $cur_temperature<br>
