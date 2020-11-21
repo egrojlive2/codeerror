@@ -146,7 +146,7 @@ echo -e "<font color=\"#FFBF38\">=========:DATOS DEL SISTEMA:=========</font><br
 
 <font color=\"#FFBF38\">=========: PUERTOS ACTIVOS :=========</font><br>
 <font color=\"#77C500\">Puertos IPv4 =</font>  $OPEN_PORTS_IPV4<br>
-<font color=\"#77C500\">Puertos IPv6 =</font>  $OPEN_PORTS_IPV6<br>"
+<font color=\"#77C500\">Puertos IPv6 =</font>  $OPEN_PORTS_IPV6"
 
 opensshport="$(netstat -ntlp | grep -i ssh | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
 dropbearport="$(netstat -nlpt | grep -i dropbear | grep -i 0.0.0.0 | awk '{print $4}' | cut -d: -f2)"
