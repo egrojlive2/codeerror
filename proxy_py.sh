@@ -4,6 +4,7 @@
 #echo "PROXY OPENVPN 8082"
 mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
+apt install curl > /dev/null 2>&1;
 if [ -f /etc/code/proxy.py ]; then
 rm /etc/code/proxy.py > /dev/null 2>&1;
 wget https://github.com/egrojlive/codeerror/raw/master/pr_py.py -O /etc/code/proxy.py > /dev/null 2>&1;
