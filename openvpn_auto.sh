@@ -6,6 +6,10 @@
 #if [[ $proveedor == *Microsoft* ]]; then
 #sudo su
 #fi
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 sistema_operativo=$(cat /etc/os-release)
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
