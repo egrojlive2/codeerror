@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 lista=$1
 if [ -d /etc/code/limite ]; then
 for usuario in $lista;
