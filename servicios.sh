@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 function ssl_info(){
         if [ -f /etc/code/proxy.py ]; then
     puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
