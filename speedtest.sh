@@ -16,7 +16,10 @@
 #
 # Inspired by speedtest-cli written in python by Matt Martz (sivel)
 #   https://github.com/sivel/speedtest-cli
-
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 PROGRAMNAME="Speedtest-Lite"
 VERSION="0.2.0"
 AGENT="$PROGRAMNAME/$VERSION"
