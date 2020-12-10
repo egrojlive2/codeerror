@@ -2,6 +2,10 @@
 #echo "INSTALANDO PROXY PYTHON"
 #echo "PROXY SSH 8081"
 #echo "PROXY OPENVPN 8082"
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
 apt install curl > /dev/null 2>&1;
