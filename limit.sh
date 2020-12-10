@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 mkdir -p /etc/code/limite
 userrc=$(echo $1 |sed 's/@/aa/g' |sed 's/-/k/g' |sed 's/0/a/g' |sed 's/1/b/g' |sed 's/2/c/g' |sed 's/3/d/g' |sed 's/4/e/g' |sed 's/5/f/g' |sed 's/6/g/g' |sed 's/7/h/g' |sed 's/8/i/g' |sed 's/9/j/g')
 limpcron=$(cat /etc/crontab |grep -v "#$1#")
