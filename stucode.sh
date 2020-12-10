@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 ip=$1;
 puerto=$2;
 if [ $ip ]; then
