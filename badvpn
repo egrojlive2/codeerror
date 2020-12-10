@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-
+if [ $USER != "root" ]; then
+echo "Este Script Solo Funciona Con Usuario root";
+exit 0;
+fi
 function verificar(){
 apt-get install systemd -y > /dev/null 2>&1
 if [ -f /bin/badvpn ]; then
