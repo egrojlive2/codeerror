@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 rm ONLINE > /dev/null 2>&1;rm ssh.txt > /dev/null 2>&1;rm login-db.txt > /dev/null 2>&1
 
 data=( `ps aux | grep "\[priv\]" | sort -k 72 | awk '{print $2}'`);
