@@ -1,7 +1,7 @@
 #!/bin/bash
-if [ $USER != "root" ]; then
-echo "Este Script Solo Funciona Con Usuario root";
-exit 0;
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
 fi
 lista=$(grep /home/ /etc/passwd | grep -v syslog | grep -v root | cut -d ":" -f1,5 | grep -v ntp | grep -v debian| sed "s/,/:/g"| sed "s/ /$/g")
 for usuario in $lista;
