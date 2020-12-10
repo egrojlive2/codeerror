@@ -1,4 +1,8 @@
 #!/bin/bash
+if [[ "$USER" != 'root' ]]; then
+  echo "Este Script Solo Funciona Para Usuarios root"
+  exit
+fi
 timedatectl set-timezone America/Mexico_City > /dev/null 2>&1;
 ja="mi"
 je="key"
