@@ -15,7 +15,7 @@ fi
 function instalar(){
 echo "#!/bin/bash
 if [ "'$1'" == start ]; then
-badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 10 > /dev/null & echo 'Badvpn ejecutandose en puerto 7300'
+badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 1000 --max-connections-for-client 10 > /dev/null & echo 'Badvpn ejecutandose en puerto 7200'
 fi
 if [ "'$1'" == stop ]; then
 badvpnpid="'$(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
@@ -87,6 +87,6 @@ chmod 777 /etc/systemd/system/badvpn.service
 systemctl daemon-reload > /dev/null 2>&1
 systemctl enable badvpn.service > /dev/null 2>&1
 systemctl start badvpn.service > /dev/null 2>&1
-echo "badvpn ejecutandose en puerto 7300"
+echo "badvpn ejecutandose en puerto 7200"
 }
 verificar
