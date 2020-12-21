@@ -91,6 +91,7 @@ Restart=on-failure
 WantedBy=multi-user.target" > /etc/systemd/system/badvpn.service
 cp /etc/systemd/system/badvpn.service /etc/systemd/system/badvpn2.service
 sed -i "s/7300/7200/g" /etc/systemd/system/badvpn2.service
+sed -i "s/badvpn/badvpn2/g" /etc/systemd/system/badvpn2.service
 chmod 777 /etc/code/badvpn.sh
 chmod 777 /etc/code/badvpn2.sh
 chmod 777 /etc/systemd/system/badvpn.service
