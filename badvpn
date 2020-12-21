@@ -70,13 +70,13 @@ then
 echo "#!/usr/bin/env bash
 badvpn start" > /etc/code/badvpn.sh
 echo "#!/usr/bin/env bash
-badvpn2 start" > /etc/code/badvpn.sh
+badvpn2 start" > /etc/code/badvpn2.sh
 else
 mkdir /etc/code
 echo "#!/usr/bin/env bash
 badvpn start" > /etc/code/badvpn.sh
 echo "#!/usr/bin/env bash
-badvpn2 start" > /etc/code/badvpn.sh
+badvpn2 start" > /etc/code/badvpn2.sh
 fi
 echo "[Unit]
 Description=SERVICIO BADVPN SOPORTE DE VIDEOLLAMADAS(UDP)
