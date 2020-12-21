@@ -25,7 +25,10 @@ kill "$badvpnpid" > /dev/null 2>/dev/null''
 kill $(ps x |grep badvpn |grep -v grep |awk '"{'"'print $1'"'})
 killall badvpn-udpgw
 fi" > /bin/badvpn
+cp /bin/badvpn /bin/badvpn2
+sed -i "s/7300/7200/g" /bin/badvpn2
 chmod 777 /bin/badvpn
+chmod 777 /bin/badvpn2
 echo -e "\033[1;31m           Instalador Badvpn\n\033[1;37mInstalando badvpn...\033[0m"
 apt-get update >/dev/null 2>/dev/null
 apt-get install -y gcc >/dev/null 2>/dev/null
@@ -55,6 +58,7 @@ cd ; rm -rf badvpn-1.999.128/ badvpn-1.999.128.tar.bz2 >/dev/null 2>/dev/null
 iniciar
 rclocale="
 badvpn start
+badvpn2 start
 exit 0
 "
 echo "$rclocale" > /etc/rc.local
@@ -65,10 +69,14 @@ if [ -f /etc/code/badvpn.sh ];
 then
 echo "#!/usr/bin/env bash
 badvpn start" > /etc/code/badvpn.sh
+echo "#!/usr/bin/env bash
+badvpn2 start" > /etc/code/badvpn.sh
 else
 mkdir /etc/code
 echo "#!/usr/bin/env bash
 badvpn start" > /etc/code/badvpn.sh
+echo "#!/usr/bin/env bash
+badvpn2 start" > /etc/code/badvpn.sh
 fi
 echo "[Unit]
 Description=SERVICIO BADVPN SOPORTE DE VIDEOLLAMADAS(UDP)
@@ -81,12 +89,18 @@ User=root
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/badvpn.service
-
+cp /etc/systemd/system/badvpn.service /etc/systemd/system/badvpn2.service
+sed -i "s/7300/7200/g" /etc/systemd/system/badvpn2.service
 chmod 777 /etc/code/badvpn.sh
+chmod 777 /etc/code/badvpn2.sh
 chmod 777 /etc/systemd/system/badvpn.service
+chmod 777 /etc/systemd/system/badvpn2.service
 systemctl daemon-reload > /dev/null 2>&1
 systemctl enable badvpn.service > /dev/null 2>&1
 systemctl start badvpn.service > /dev/null 2>&1
+systemctl enable badvpn2.service > /dev/null 2>&1
+systemctl start badvpn2.service > /dev/null 2>&1
+echo "badvpn ejecutandose en puerto 7200"
 echo "badvpn ejecutandose en puerto 7300"
 }
 verificar
