@@ -1,4 +1,20 @@
 #!/bin/bash
+remover_drop(){
+buscar=$1
+data=( `ps aux | grep -i dropbear | awk '{print $2}'`);
+for PID in "${data[@]}"
+do
+        NUM1=`cat /var/log/auth.log | grep -i dropbear | grep -i "Password auth succeeded" | grep "dropbear\[$PID\]" | wc -l`;
+        USER2=`cat /var/log/auth.log | grep -i dropbear | grep -i "Password auth succeeded" | grep "dropbear\[$PID\]" | awk '{print $10}' | sed "s/'//g"`;
+        IP=`cat /var/log/auth.log | grep -i dropbear | grep -i "Password auth succeeded" | grep "dropbear\[$PID\]" | awk '{print $12}'`;
+        if [ $NUM1 -eq 1 ]; then
+                if [ "$buscar" == "$USER2" ]; then
+                kill $PID > /dev/null 2>&1;
+                fi
+        fi
+done
+}
+
 if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
   exit
@@ -8,7 +24,6 @@ eliminados=0
 lista=""
 hoy=$(date +'%Y%m%d')
 registros=$(grep /home/ /etc/passwd | grep -v syslog | grep -v root | cut -d ":" -f1 | grep -v ntp | grep -v debian)
-
 
 for PID in $registros
 do
@@ -26,6 +41,7 @@ fecha_cad=$(date -d "$d_c-$m_c-$a_c" +'%Y%m%d')
 if [ $hoy -ge $fecha_cad ]; then
 pkill -u $usuario
 userdel $usuario
+remover_drop "$usuario";
 limpcron=$(cat /etc/crontab |grep -v "#$usuario#")
 echo "$limpcron" > /etc/crontab
 ((eliminados ++))
