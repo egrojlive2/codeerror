@@ -82,7 +82,7 @@ limpiar_usuarios;
 sleep 2.5s;
 limpiar_usuarios;
 sleep 2.5s;
-impiar_usuarios;
+limpiar_usuarios;
 sleep 2.5s;
 limpiar_usuarios;
 sleep 2.5s;
