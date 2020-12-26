@@ -10,7 +10,7 @@ echo "$limpcron" > /etc/crontab
 echo "#!/usr/bin/env bash
 function limpiar_usuarios(){
 rm /tmp/sshpid$1
-echo \$(ps -u $1 | grep sshd | awk '{print \$1}' | sed 's/ /$/g') >> /tmp/sshpid$1;
+echo \"$(ps -u $1 | grep sshd | awk '{print \$1}' | sed 's/ /$/g')" >> /tmp/sshpid$1;
 data=\$(ps aux | grep -i dropbear | awk '{print \$2}');
 for PID in "\${data[@]}"
 do
