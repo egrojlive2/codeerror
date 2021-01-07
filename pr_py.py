@@ -121,6 +121,9 @@ class ConnectionHandler(threading.Thread):
                
                 if 'panelhost:' in x:
                         hostPort = x.split(": ")[1].rstrip()
+                        pass
+                else:
+                        hostPort = '127.0.0.1:22'
             if hostPort == '':
                 hostPort = DEFAULT_HOST
 
