@@ -5,7 +5,7 @@ if [[ "$USER" != 'root' ]]; then
 fi
 
 if [ !$(which stunnel) ]; then
-echo 'Por Favor Instala Stunnel Primero'
+echo 'Es Necesario Que Primero Instales Stunnel'
 exit 0
 fi
 ip=$1;
