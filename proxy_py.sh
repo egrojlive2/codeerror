@@ -38,7 +38,7 @@ Restart=on-failure
 WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
 
 echo "[Unit]
-Description=SERVICIO proxy python para OPENVPN en escucha puerto 3128
+Description=SERVICIO proxy python para OPENVPN en escucha puerto 8043
 After=network.target
 
 [Service]
@@ -48,8 +48,8 @@ User=root
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/proxyvpnpy.service;
-sed -i "s/8080/3128/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
-sed -i "s/22/4444/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
+sed -i "s/8080/8043/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
+#sed -i "s/22/4444/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
 
 chmod +x /etc/systemd/system/proxypy.service > /dev/null 2>&1;
 chmod +x /etc/systemd/system/proxyvpnpy.service > /dev/null 2>&1;
