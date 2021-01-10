@@ -59,5 +59,6 @@ systemctl enable stunnel5.service > /dev/null 2>&1;
 systemctl restart stunnel5.service > /dev/null 2>&1;
 echo "Redireccionado Puerto $puerto Para Ssl tls tunnel"
 echo "Ahora Puedes Usar Tu Vpn En Ssl En Puerto: $puerto"
+echo "Para Conectarte a $ip"
 echo
 rm $0 > /dev/null 2>&1;
