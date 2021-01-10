@@ -4,7 +4,7 @@ if [[ "$USER" != 'root' ]]; then
   exit
 fi
 
-if [ $(which stunnel) ]; then
+if [ !$(which stunnel) ]; then
 echo 'Por Favor Instala Stunnel Primero'
 exit 0
 fi
