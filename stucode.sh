@@ -8,19 +8,23 @@ if [ !$(which stunnel) ]; then
 echo 'Es Necesario Que Primero Instales Stunnel'
 exit 0
 fi
+
 ip=$1;
 puerto=$2;
+
 if [ $ip ]; then
 echo;
 else
 echo "No Se Recibio La Ip Y Puerto"
 exit 0;
 fi
+
 if [ $puerto ]; then
 escuchar=$puerto;
 else
 escuchar=442;
 fi
+
 mkdir /etc/code > /dev/null 2>&1;
 echo "[stunnelcode5]
 client = no
