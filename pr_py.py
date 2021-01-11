@@ -13,7 +13,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 200 <h5 style='text-align:center;'><font color="#FF3D00">Code_err0r</font></h5>\r\n\r\n'
+RESPONSE = 'HTTP/1.1 200 <h5 style="text-align:center;"><font color="#FF3D00">Pan3l Code_err0r<br>&#2039;</font></h5>\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 class Server(threading.Thread):
