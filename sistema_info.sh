@@ -3,6 +3,7 @@ if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
   exit
 fi
+rm stunnel21.txt squid21.txt > /dev/null 2>&1
 apt install net-tools -y > /dev/null 2>&1
 apt install -y curl > /dev/null 2>&1;
 ########################################################################
