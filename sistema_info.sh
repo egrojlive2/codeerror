@@ -4,11 +4,11 @@ if [[ "$USER" != 'root' ]]; then
   exit
 fi
 rm stunnel21.txt squid21.txt > /dev/null 2>&1
-if [ $(which curl) ]; then
+if [ $(which net-tools) ]; then
 echo
 else
-apt update > /dev/null 2>&1
-apt install net-tools -y > /dev/null 2>&1
+apt update > /dev/null 2>&1;
+apt install net-tools -y > /dev/null 2>&1;
 apt install -y curl > /dev/null 2>&1;
 fi
 ########################################################################
