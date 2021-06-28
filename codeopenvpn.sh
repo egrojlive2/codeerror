@@ -18,18 +18,21 @@ UDP_SERVICE_AND_CONFIG_NAME="openvpn_udp"
 
 if [[ "$USER" != 'root' ]]; then
   echo "Sorry, you need to run this as root"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 
 
 if [[ ! -e /dev/net/tun ]]; then
   echo "TUN/TAP is not available"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 
 
 if grep -qs "CentOS release 5" "/etc/redhat-release"; then
   echo "CentOS 5 is too old and not supported"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 
@@ -43,6 +46,7 @@ elif [[ -e /etc/centos-release || -e /etc/redhat-release ]]; then
   chmod +x /etc/rc.d/rc.local
 else
   echo "Looks like you aren't running this installer on a Debian, Ubuntu or CentOS system"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 
