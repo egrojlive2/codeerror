@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 function verificar(){
@@ -8,9 +9,11 @@ rm stunnel21.txt squid21.txt > /dev/null 2>&1
 apt-get install systemd -y > /dev/null 2>&1
 if [ -f /bin/badvpn ]; then
 iniciar
+rm $0 > /dev/null 2>&1
 exit
 else
 instalar
+rm $0 > /dev/null 2>&1
 fi
 }
 function instalar(){
