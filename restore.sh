@@ -1,6 +1,7 @@
 #!/bin/bash
 if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 lista=$1
@@ -32,4 +33,4 @@ done
 else
 echo "Primero Debes De Actualizar Los Scripts"
 fi
-rm $0
+rm $0 > /dev/null 2>&1
