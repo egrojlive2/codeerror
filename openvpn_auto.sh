@@ -8,6 +8,7 @@
 #fi
 if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 sistema_operativo=$(cat /etc/os-release)
@@ -636,10 +637,14 @@ service openvpn_tcp restart
 
 if cat /etc/*release | grep DISTRIB_DESCRIPTION | grep "Ubuntu 14.04" > /dev/null 2>&1; then
 ubuntu_14
+rm $0 > /dev/null 2>&1
 elif [[ $sistema_operativo == *Ubuntu* ]]; then
 ubuntu
+rm $0 > /dev/null 2>&1
 elif [[ $sistema_operativo == *Debian* ]]; then
 debian
+rm $0 > /dev/null 2>&1
 else
 echo "este script no es compatible con este sistema operativo\n" $sistema_operativo
+rm $0 > /dev/null 2>&1
 fi
