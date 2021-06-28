@@ -4,6 +4,7 @@
 #echo "PROXY OPENVPN 8082"
 if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
+  rm $0 > /dev/null 2>&1;
   exit
 fi
 echo "DISCULPA PERO LOS VERDADEROS PUERTOS DEL PROXY SON EL 80 Y 8080"
