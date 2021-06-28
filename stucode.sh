@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
+  rm $0 > /dev/null 2>&1
   exit
 fi
 
@@ -8,6 +9,7 @@ if [ $(which stunnel) ]; then
 echo
 else
 echo 'Es Necesario Que Primero Instales Stunnel'
+rm $0 > /dev/null 2>&1
 exit 0
 fi
 
@@ -18,6 +20,7 @@ if [ $ip ]; then
 echo;
 else
 echo "No Se Recibio La Ip Y Puerto"
+rm $0 > /dev/null 2>&1
 exit 0;
 fi
 
