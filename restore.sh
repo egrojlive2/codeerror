@@ -4,6 +4,12 @@ if [[ "$USER" != 'root' ]]; then
   rm $0 > /dev/null 2>&1
   exit
 fi
+if [ -f /usr/bin/limitar ]; then
+echo
+else
+echo 'Primero Crea Un Usuario O Actualiza Los Scripts';
+exit
+fi
 lista=$1
 if [ -d /etc/code/limite ]; then
 for usuario in $lista;
