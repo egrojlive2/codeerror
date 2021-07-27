@@ -54,7 +54,7 @@ else
 echo "El Servicio Proxy squid No Se Encuentra Instalado"
 if [ -f /etc/code/proxy.py ]; then
 echo
-echo "Proxy Tcp Instalado en Puertos 8080 y 8043"
+echo "Proxy Tcp Instalado en Puertos 80 y 8080"
 else
 echo "proxy Tcp no Instalado"
 fi
