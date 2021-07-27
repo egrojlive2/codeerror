@@ -26,6 +26,7 @@ fecha=''
 fi
 if [ $limite ]; then
 chfn -o $limite $us1 > /dev/null 2>&1;
+chmod 777 /usr/bin/limitar > /dev/null 2>&1;
 limitar $us1 $limite;
 fi
 done
