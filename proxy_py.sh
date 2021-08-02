@@ -7,7 +7,7 @@ if [[ "$USER" != 'root' ]]; then
   rm $0 > /dev/null 2>&1;
   exit
 fi
-echo "DISCULPA PERO LOS VERDADEROS PUERTOS DEL PROXY SON EL 80 Y 8080"
+echo "<font color='green'>DISCULPA PERO LOS VERDADEROS PUERTOS DEL PROXY SON EL 80 Y 8080</font>"
 mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
 apt install curl -y > /dev/null 2>&1;
