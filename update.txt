@@ -1,6 +1,6 @@
 {
   "versionCode":3,
-  "versionName":"3.11",
-  "mejoras":"📲Se Agrega v2Ray#Se agrega Nuevo Servicio para conexión de vpn premium: nordvpn, hma, ZenMate, vpnbook, tunnelbear en ssl o redireccionamiento en payload con proxy tcp.###⭐Espera las Nuevas Mejoras...",
-  "url":"https://drive.google.com/uc?export=download&id=11KmQIIyZVZtZaOFkyzI0M5KGTuDcXc3t"
+  "versionName":"3.18",
+  "mejoras":"📲Se Agrega Opción Para Personalizar Puerto stunnel#Se agrega Opción Para Personalizar Puerto Proxy Python Tcp.###⭐Espera las Nuevas Mejoras...",
+  "url":"https://drive.google.com/uc?export=download&id=19gSv56d_Ucm8zXSWY4GyQTE3xLnRAxHW"
 }
