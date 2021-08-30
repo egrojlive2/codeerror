@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
-#echo "INSTALANDO PROXY PYTHON"
-#echo "PROXY SSH 8081"
-#echo "PROXY OPENVPN 8082"
+
 if [[ "$USER" != 'root' ]]; then
   echo "Este Script Solo Funciona Para Usuarios root"
   rm $0 > /dev/null 2>&1;
   exit
 fi
-echo "<font color='green'>DISCULPA PERO LOS VERDADEROS PUERTOS DEL PROXY SON EL 80 Y 8080</font>"
+puerto_primero='80'
+puerto_segundo='8080'
+
+if [ $1 ]; then
+puerto_primero=$1;
+fi
+if [ $2 ]; then
+puerto_segundo=$2;
+fi
+
+echo "<font color='green'>Instalando Proxy En Puertos EL $puerto_primero Y $puerto_segundo</font>"
 mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
 apt install curl -y > /dev/null 2>&1;
@@ -24,11 +32,9 @@ cp /etc/code/proxy.py /etc/code/proxyvpn.py;
 chmod +x /etc/code/proxy.py > /dev/null 2>&1;
 chmod +x /etc/code/proxyvpn.py > /dev/null 2>&1;
 fi
-#sed -i "s/8080/8081/g" /etc/default/sslh > /dev/null 2>&1;
-#service sslh restart > /dev/null 2>&1;
 
 echo "[Unit]
-Description=SERVICIO proxy python en escucha puerto 80
+Description=SERVICIO proxy python en escucha puerto $puerto_primero
 After=network.target
 
 [Service]
@@ -40,7 +46,7 @@ Restart=on-failure
 WantedBy=multi-user.target" > /etc/systemd/system/proxypy.service;
 
 echo "[Unit]
-Description=SERVICIO proxy python para OPENVPN en escucha puerto 8080
+Description=SERVICIO proxy python para OPENVPN en escucha puerto $puerto_segundo
 After=network.target
 
 [Service]
@@ -50,8 +56,8 @@ User=root
 Restart=on-failure
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/proxyvpnpy.service;
-sed -i "s/80/8080/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
-#sed -i "s/22/4444/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
+sed -i "s/80/$puerto_primero/g" /etc/code/proxy.py > /dev/null 2>&1;
+sed -i "s/80/$puerto_segundo/g" /etc/code/proxyvpn.py > /dev/null 2>&1;
 
 chmod +x /etc/systemd/system/proxypy.service > /dev/null 2>&1;
 chmod +x /etc/systemd/system/proxyvpnpy.service > /dev/null 2>&1;
