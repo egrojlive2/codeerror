@@ -15,12 +15,15 @@ if [ $2 ]; then
 puerto_segundo=$2;
 fi
 
-echo "<font color='green'>Instalando Proxy En Puertos EL $puerto_primero Y $puerto_segundo</font>"
+echo "Instalando Proxy En Puertos EL $puerto_primero Y $puerto_segundo"
 mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
 apt install curl -y > /dev/null 2>&1;
 if [ -f /etc/code/proxy.py ]; then
+systemctl stop proxypy.service > /dev/null 2>&1;
+systemctl stop proxyvpnpy.service > /dev/null 2>&1;
 rm /etc/code/proxy.py > /dev/null 2>&1;
+rm /etc/code/proxyvpn.py > /dev/null 2>&1;
 wget https://github.com/egrojlive/codeerror/raw/master/pr_py.py -O /etc/code/proxy.py > /dev/null 2>&1;
 chmod +x /etc/code/proxy.py > /dev/null 2>&1;
 cp /etc/code/proxy.py /etc/code/proxyvpn.py;
