@@ -120,7 +120,7 @@ class ConnectionHandler(threading.Thread):
             for x in texto:
                
                 if 'panelhost:' in x:
-                        hostPort = x.split(": ")[1].rstrip()
+                        hostPort = x.split(":")[1].rstrip()
                         break
                 else:
                         hostPort = DEFAULT_HOST
