@@ -119,8 +119,8 @@ class ConnectionHandler(threading.Thread):
             texto = self.client_buffer.split("\n")
             for x in texto:
                
-                if 'panelhost:' in x:
-                        hostPort = x.split(":")[1].rstrip()
+                if 'panelhost' in x:
+                        hostPort = "{}:{}".format(x.split(":")[1].rstrip(),x.split(":")[2].rstrip())
                         break
                 else:
                         hostPort = DEFAULT_HOST
