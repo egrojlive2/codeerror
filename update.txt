@@ -1,6 +1,6 @@
 {
   "versionCode":3,
-  "versionName":"3.18",
-  "mejoras":"📲Se Agrega Opción Para Personalizar Puerto stunnel#Se agrega Opción Para Personalizar Puerto Proxy Python Tcp.###⭐Espera las Nuevas Mejoras...",
+  "versionName":"3.22",
+  "mejoras":"📲Se Agrega Opcion Para Ganar Creditos Gratis#Se Agrega Instalacion De Slowdns.##✨Si El Enlace Esta Roto Puedes Descargarla Desde El Canal De Telegram: http://t.me/panelcodeerror✨###⭐Espera las Nuevas Mejoras...",
   "url":"https://drive.google.com/uc?export=download&id=19gSv56d_Ucm8zXSWY4GyQTE3xLnRAxHW"
 }
