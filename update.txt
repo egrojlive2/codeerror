@@ -1,6 +1,6 @@
 {
   "versionCode":3,
   "versionName":"3.22",
-  "mejoras":"📲Se Agrega Opcion Para Ganar Creditos Gratis#Se Agrega Instalacion De Slowdns.##✨Si El Enlace Esta Roto Puedes Descargarla Desde El Canal De Telegram: http://t.me/panelcodeerror✨###⭐Espera las Nuevas Mejoras...",
+  "mejoras":"📲Se Agrega Opcion Para Ganar Creditos Gratis(aun en pruebas)#Se Agrega Instalacion De Slowdns.##✨Si El Enlace Esta Roto Puedes Descargarla Desde El Canal De Telegram: http://t.me/panelcodeerror✨###⭐Espera las Nuevas Mejoras...",
   "url":"http://download1484.mediafire.com/kb9xniinhpzg/zl0wrx0lokc316k/COD3+ERR0R+PAN3L.apk"
 }
