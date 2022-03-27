@@ -15,6 +15,11 @@ if [ $2 ]; then
 puerto_segundo=$2;
 fi
 
+if [ -f /etc/code/servidores.json ]; then
+echo
+else
+echo "{'default':'127.0.0.1'}" > /etc/code/servidores.json
+fi
 echo "Instalando Proxy En Puertos EL $puerto_primero Y $puerto_segundo"
 mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
