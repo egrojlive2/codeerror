@@ -1,5 +1,5 @@
 import socket, threading, thread, select, signal, sys, time, getopt
-
+import json
 # Listen
 LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
@@ -13,7 +13,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 101 <h5 style="text-align:center;"><span style="background:#ff00aa"><font color="#ffffff"><big>P<small>an3l <big>C<small>ode <big>E<small>rr0r v3.19</font></span><br><big>&#2039;</h5>\r\n\r\n'
+RESPONSE = 'HTTP/1.1 101 <h5 style="text-align:center;"><span style="background:#ff00aa"><font color="#ffffff"><big>P<small>an3l <big>C<small>ode <big>E<small>rr0r v3.22</font></span></h5><br><h2 style="text-align:center;">&#2039;</h2>\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 class Server(threading.Thread):
@@ -115,17 +115,20 @@ class ConnectionHandler(threading.Thread):
         try:
             self.client_buffer = self.client.recv(BUFLEN)
 
-           
+            with open("/etc/code/servidores.json", "r") as read_server:
+                servidores = json.load(read_server)
+
             texto = self.client_buffer.split("\n")
             for x in texto:
                
                 if 'panelhost:' in x:
-                        xx = x.replace(' ', '')
-                        hostPort = "{}:{}".format(xx.split(":")[1].rstrip(),xx.split(":")[2].rstrip())
+                        xx = x.split(":")[1].rstrip()
+                        xx = xx.replace(' ','')
+                        hostPort = servidores[xx]
                         break
                 else:
-                        hostPort = DEFAULT_HOST
-
+                        hostPort = servidores["default"]
+                        
             split = self.findHeader(self.client_buffer, 'X-Split')
 
             if split != '':
