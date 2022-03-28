@@ -15,13 +15,13 @@ if [ $2 ]; then
 puerto_segundo=$2;
 fi
 
-if [ -f /etc/code/servidores.json ]; then
+echo "Instalando Proxy En Puertos EL $puerto_primero Y $puerto_segundo"
+mkdir /etc/code > /dev/null 2>&1;
+if [_-f /etc/code/servidores.json]; then
 echo
 else
 echo "{'default':'127.0.0.1'}" > /etc/code/servidores.json
 fi
-echo "Instalando Proxy En Puertos EL $puerto_primero Y $puerto_segundo"
-mkdir /etc/code > /dev/null 2>&1;
 apt-get install python -y > /dev/null 2>&1;
 apt install curl -y > /dev/null 2>&1;
 if [ -f /etc/code/proxy.py ]; then
@@ -47,7 +47,7 @@ After=network.target
 
 [Service]
 Type=ilde
-ExecStart=/usr/bin/python /etc/code/proxy.py $puerto_primero
+ExecStart=/usr/bin/python /etc/code/proxy.py
 User=root
 Restart=on-failure
 [Install]
@@ -59,7 +59,7 @@ After=network.target
 
 [Service]
 Type=ilde
-ExecStart=/usr/bin/python /etc/code/proxyvpn.py $puerto_segundo
+ExecStart=/usr/bin/python /etc/code/proxyvpn.py
 User=root
 Restart=on-failure
 [Install]
