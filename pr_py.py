@@ -124,10 +124,7 @@ class ConnectionHandler(threading.Thread):
                 if 'panelhost:' in x:
                         xx = x.split(":")[1].rstrip()
                         xx = xx.replace(' ','')
-                        if xx in servidores:
-                            hostPort = servidores[xx]
-                        else:
-                            hostPort = servidores["default"]
+                        hostPort = servidores[xx]
                         break
                 else:
                         hostPort = servidores["default"]
