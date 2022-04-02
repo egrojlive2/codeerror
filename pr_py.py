@@ -122,8 +122,8 @@ class ConnectionHandler(threading.Thread):
             for x in texto:
                
                 if 'panelhost:' in x:
-                    xx = x.replace(' ', '')
                     xx = x.split(":")[1].rstrip()
+                    xx = x.replace(' ', '')
                     hostPort = servidores[xx]
                     break
                 else:
