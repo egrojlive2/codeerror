@@ -122,12 +122,12 @@ class ConnectionHandler(threading.Thread):
             for x in texto:
                
                 if 'panelhost:' in x:
-                        xx = x.replace(' ', '')
-                        xx = x.split(":")[1].rstrip()
-                        hostPort = servidores[xx]
-                        break
+                    xx = x.replace(' ', '')
+                    xx = x.split(":")[1].rstrip()
+                    hostPort = servidores[xx]
+                    break
                 else:
-                        hostPort = DEFAULT_HOST
+                    hostPort = servidores["default"]
 
             split = self.findHeader(self.client_buffer, 'X-Split')
 
