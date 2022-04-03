@@ -5,7 +5,7 @@ LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
   LISTENING_PORT = sys.argv[1]
 else:
-  LISTENING_PORT = 80
+  LISTENING_PORT = 8080
 #Pass
 PASS = ''
 
@@ -114,7 +114,6 @@ class ConnectionHandler(threading.Thread):
     def run(self):
         try:
             self.client_buffer = self.client.recv(BUFLEN)
-
             with open("/etc/code/servidores.json", "r") as read_server:
                 servidores = json.load(read_server)
 
