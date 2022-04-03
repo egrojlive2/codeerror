@@ -17,10 +17,10 @@ fi
 
 echo "Instalando Proxy En Puertos EL $puerto_primero Y $puerto_segundo"
 mkdir /etc/code > /dev/null 2>&1;
-if [ -f /etc/code/servidores.json ]; then
+if [_-f /etc/code/servidores.json ]; then
 echo
 else
-echo "{'default':'127.0.0.1'}" > /etc/code/servidores.json
+echo '{"default":"127.0.0.1:22"}' > /etc/code/servidores.json
 fi
 apt-get install python -y > /dev/null 2>&1;
 apt install curl -y > /dev/null 2>&1;
