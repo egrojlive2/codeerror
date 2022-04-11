@@ -112,5 +112,6 @@ systemctl enable badvpn2.service > /dev/null 2>&1
 systemctl start badvpn2.service > /dev/null 2>&1
 echo "badvpn ejecutandose en puerto 7200"
 echo "badvpn ejecutandose en puerto 7300"
+echo -e "\n👉Listo!!\n\n📲🎥Las Videollamadas Y Juegos Online Se Han Habilitado Con Esta Funcion...\n"
 }
 verificar
