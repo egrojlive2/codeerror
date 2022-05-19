@@ -27,38 +27,46 @@ function ssl_info(){
 }
 function squid_info(){
 if [ -f /etc/squid/squid.conf ]; then
-        puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
-inform=$(systemctl status proxypy.service);
+    puertosquid=$(cat /etc/squid/squid.conf | grep -i http_port | awk '{print $2}' | sort)
+	inform=$(systemctl status proxypy.service);
     if [[ $inform =~ "Active: active" ]]; then
-    echo "El Servicio Proxy tcp Esta Corriendo Correctamente\n"
+    	res="El Servicio Proxy tcp Esta Corriendo Correctamente\n"
     else
-    echo "Hay Un Error En El Servicio\n"
+    	res="Hay Un Error En El Servicio\n"
     fi
 for p2 in $puertosquid
 do
-echo "puerto $p2"
+puertos_sq="puerto $p2"
 done
 elif [ -f /etc/squid3/squid.conf ]; then
-puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
-inform=$(service squid3 status);
-if [[ $inform =~ "Active: active" ]]; then
-echo "El Servicio squid Esta Corriendo Correctamente"
+	puertosquid=$(cat /etc/squid3/squid.conf | grep -i http_port | awk '{print $2}' | sort)
+	inform=$(service squid3 status);
+	if [[ $inform =~ "Active: active" ]]; then
+		res="El Servicio squid Esta Corriendo Correctamente"
+	else
+		res="Hay Un Error En El Servicio"
+	fi
+	for p2 in $puertosquid
+	do
+	puertos_sq="puerto $p2"
+	done
 else
-echo "Hay Un Error En El Servicio"
-fi
-for p2 in $puertosquid
-do
-echo "puerto $p2"
-done
-else
-echo "El Servicio Proxy squid No Se Encuentra Instalado"
+res="El Servicio Proxy squid No Se Encuentra Instalado"
 if [ -f /etc/code/proxy.py ]; then
-echo
-echo "Proxy Tcp Instalado en Puertos 80 y 8080"
+	res2="Proxy Tcp Instalado"
+	if [ -f /etc/code/servidores.json ]; then
+		config=$(cat /etc/code/servidores.json)
+	else
+		config=`""`
+	fi
 else
-echo "proxy Tcp no Instalado"
+	res2="proxy Tcp no Instalado"
 fi
-        return
+echo -e `{
+"resultado":"$res\n$res2",
+"config":$config
+}`
+    return
 fi
 unset puertosquid
     unset p2
