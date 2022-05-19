@@ -57,15 +57,12 @@ if [ -f /etc/code/proxy.py ]; then
 	if [ -f /etc/code/servidores.json ]; then
 		config=$(cat /etc/code/servidores.json)
 	else
-		config=`""`
+		config=""
 	fi
 else
 	res2="proxy Tcp no Instalado"
 fi
-echo -e `{
-"resultado":"$res\n$res2",
-"config":$config
-}`
+echo -e `{\n"resultado":"$res\n$res2",\n"config":$config\n}`
     return
 fi
 unset puertosquid
