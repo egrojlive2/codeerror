@@ -48,47 +48,50 @@ elif [ -f /etc/squid3/squid.conf ]; then
 	fi
 	for p2 in $puertosquid
 	do
-	puertos_sq="puerto $p2"
+		res+="puerto $p2"
 	done
 else
-res="El Servicio Proxy squid No Se Encuentra Instalado"
-if [ -f /etc/code/proxy.py ]; then
-	res2="Proxy Tcp Instalado"
-	if [ -f /etc/code/servidores.json ]; then
-		config=$(cat /etc/code/servidores.json)
+	res="El Servicio Proxy squid No Se Encuentra Instalado"
+	if [ -f /etc/code/proxy.py ]; then
+		res2="Proxy Tcp Instalado En Puertos: $(netstat -tunlp | grep python | awk '{print $4}' | cut -d ":" -f2)"
+		if [ -f /etc/code/servidores.json ]; then
+			config=$(cat /etc/code/servidores.json)
+		else
+			config=""
+		fi
 	else
-		config=""
+		res2="proxy Tcp no Instalado"
 	fi
-else
-	res2="proxy Tcp no Instalado"
-fi
-	echo -e `{\n"resultado":"$res\n$res2",\n"config":$config\n}`
+	echo -e "{
+\"resultado\":\"$res\n$res2\",
+\"config\":$config
+}"
     return
 fi
 unset puertosquid
-    unset p2
+unset p2
 }
 function dropbear_info(){
-        if [ -f /etc/default/dropbear ]; then
+    if [ -f /etc/default/dropbear ]; then
         puertodropbear=$(cat /etc/default/dropbear | grep -i DROPBEAR_PORT)
         inform=$(service dropbear status);
-    if [[ $inform =~ "Active: active" ]]; then
-    echo "Servicio dropbear Corriendo Correctamente"
-    else
-    echo "Error En El Servicio dropbear"
-    fi
-echo "$puertodropbear"
-else
+    	if [[ $inform =~ "Active: active" ]]; then
+    		echo "Servicio dropbear Corriendo Correctamente"
+    	else
+    		echo "Error En El Servicio dropbear"
+    	fi
+		echo "$puertodropbear"
+	else
         echo "El Servicio Dropbear No Se Encuentra Instalado"
-fi
+	fi
 unset puertodropbear
 }
 if [ $1 == "ssl" ]; then
     ssl_info
 elif [ $1 == "squid" ]; then
-        squid_info
+    squid_info
 elif [ $1 == "dropbear" ]; then
-        dropbear_info
+    dropbear_info
 else
-        echo "El Comando Es Incorrecto"
+    echo "El Comando Es Incorrecto"
 fi
