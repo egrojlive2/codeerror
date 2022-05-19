@@ -62,7 +62,7 @@ if [ -f /etc/code/proxy.py ]; then
 else
 	res2="proxy Tcp no Instalado"
 fi
-echo -e `{\n"resultado":"$res\n$res2",\n"config":$config\n}`
+	echo -e `{\n"resultado":"$res\n$res2",\n"config":$config\n}`
     return
 fi
 unset puertosquid
