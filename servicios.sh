@@ -66,7 +66,7 @@ else
 \"resultado\":\"$res\n$res2\",
 \"config\":$config
 }"
-    return
+
 fi
 unset puertosquid
 unset p2
