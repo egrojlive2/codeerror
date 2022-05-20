@@ -4,9 +4,9 @@ if [[ "$USER" != 'root' ]]; then
   rm $0 > /dev/null 2>&1
   exit
 fi
-if [ $(command jq) ]; then
+
 apt install jq -y > /dev/null 2>&1
-fi
+
 function ssl_info(){
         if [ -f /etc/code/proxy.py ]; then
     puertosssl=$(cat /etc/stunnel/stunnel.conf | grep -i accept | awk '{print $3}' | sort)
