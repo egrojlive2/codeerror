@@ -47,7 +47,7 @@ After=network.target
 
 [Service]
 Type=ilde
-ExecStart=/usr/bin/python /etc/code/proxy.py
+ExecStart=/etc/code/proxy.py
 User=root
 Restart=on-failure
 [Install]
@@ -59,7 +59,7 @@ After=network.target
 
 [Service]
 Type=ilde
-ExecStart=/usr/bin/python /etc/code/proxyvpn.py
+ExecStart=/etc/code/proxyvpn.py
 User=root
 Restart=on-failure
 [Install]
