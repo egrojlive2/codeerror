@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-import socket, threading, _thread, select, signal, sys, time, getopt
-
+import socket, threading, thread, select, signal, sys, time, getopt
+import json
 # Listen
 LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
@@ -16,7 +13,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 DEFAULT_HOST = '127.0.0.1:22'
-RESPONSE = 'HTTP/1.1 101 <h5 style="text-align:center;"><span style="background:#ff00aa"><font color="#ffffff"><big>P<small>an3l <big>C<small>ode <big>E<small>rr0r v3.29</font></span></h5><br><h2>&#2039;</h2>\r\n\r\n'
+RESPONSE = 'HTTP/1.1 101 <h5 style="text-align:center;"><span style="background:#ff00aa"><font color="#ffffff"><big>P<small>an3l <big>C<small>ode <big>E<small>rr0r v3.27</font></span></h5><br><h2>&#2039;</h2>\r\n\r\n'
 #RESPONSE = 'HTTP/1.1 200 Hello_World!\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 Connection established\r\n\r\n'  # lint:ok
 
 class Server(threading.Thread):
@@ -55,7 +52,7 @@ class Server(threading.Thread):
 
     def printLog(self, log):
         self.logLock.acquire()
-        print(log)
+        print log
         self.logLock.release()
 
     def addConn(self, conn):
@@ -118,16 +115,20 @@ class ConnectionHandler(threading.Thread):
         try:
             self.client_buffer = self.client.recv(BUFLEN)
 
-           
+            with open("/etc/code/servidores.json", "r") as read_server:
+                servidores = json.load(read_server)
+
             texto = self.client_buffer.split("\n")
             for x in texto:
                
                 if 'panelhost:' in x:
-                        hostPort = x.split(":")[1].rstrip()
+                        xx = x.split(":")[1].rstrip()
+                        xx = xx.replace(' ','')
+                        hostPort = servidores[xx]
                         break
                 else:
-                        hostPort = DEFAULT_HOST
-
+                        hostPort = servidores["default"]
+                        
             split = self.findHeader(self.client_buffer, 'X-Split')
 
             if split != '':
@@ -145,7 +146,7 @@ class ConnectionHandler(threading.Thread):
                 else:
                     self.method_CONNECT(hostPort)
             else:
-                print('- No X-Real-Host!')
+                print '- No X-Real-Host!'
                 self.client.send('HTTP/1.1 400 NoXRealHost!\r\n\r\n')
 
         except Exception as e:
@@ -232,9 +233,9 @@ class ConnectionHandler(threading.Thread):
 
 
 def print_usage():
-    print('Usage: proxy.py -p <port>')
-    print('       proxy.py -b <bindAddr> -p <port>')
-    print('       proxy.py -b 0.0.0.0 -p 8081')
+    print 'Usage: proxy.py -p <port>'
+    print '       proxy.py -b <bindAddr> -p <port>'
+    print '       proxy.py -b 0.0.0.0 -p 8081'
 
 def parse_args(argv):
     global LISTENING_ADDR
@@ -256,17 +257,17 @@ def parse_args(argv):
 
 
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
-    print("\n:-------PythonProxy-------:\n")
-    print("Listening addr: " + LISTENING_ADDR)
-    print("Listening port: " + str(LISTENING_PORT) + "\n")
-    print(":-------------------------:\n")
+    print "\n:-------PythonProxy-------:\n"
+    print "Listening addr: " + LISTENING_ADDR
+    print "Listening port: " + str(LISTENING_PORT) + "\n"
+    print ":-------------------------:\n"
     server = Server(LISTENING_ADDR, LISTENING_PORT)
     server.start()
     while True:
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print('Stopping...')
+            print 'Stopping...'
             server.close()
             break
 
