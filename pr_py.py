@@ -1,5 +1,12 @@
-import socket, threading, thread, select, signal, sys, time, getopt
+import socket, threading, select, signal, sys, time, getopt
 import json
+
+# Importación condicional para compatibilidad con Python 2 y 3
+try:
+    import thread  # Python 2
+except ImportError:
+    import _thread as thread  # Python 3
+
 # Listen
 LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
@@ -52,7 +59,7 @@ class Server(threading.Thread):
 
     def printLog(self, log):
         self.logLock.acquire()
-        print log
+        print(log)
         self.logLock.release()
 
     def addConn(self, conn):
@@ -118,7 +125,7 @@ class ConnectionHandler(threading.Thread):
             with open("/etc/code/servidores.json", "r") as read_server:
                 servidores = json.load(read_server)
 
-            texto = self.client_buffer.split("\n")
+            texto = self.client_buffer.decode('utf-8').split("\n")
             for x in texto:
                
                 if 'panelhost:' in x:
@@ -129,28 +136,28 @@ class ConnectionHandler(threading.Thread):
                 else:
                         hostPort = servidores["default"]
                         
-            split = self.findHeader(self.client_buffer, 'X-Split')
+            split = self.findHeader(self.client_buffer.decode('utf-8'), 'X-Split')
 
             if split != '':
                 self.client.recv(BUFLEN)
 
             if hostPort != '':
-                passwd = self.findHeader(self.client_buffer, 'X-Pass')
+                passwd = self.findHeader(self.client_buffer.decode('utf-8'), 'X-Pass')
 
                 if len(PASS) != 0 and passwd == PASS:
                     self.method_CONNECT(hostPort)
                 elif len(PASS) != 0 and passwd != PASS:
-                    self.client.send('HTTP/1.1 400 WrongPass!\r\n\r\n')
+                    self.client.send(b'HTTP/1.1 400 WrongPass!\r\n\r\n')
                 elif hostPort.startswith('127.0.0.1') or hostPort.startswith('localhost'):
                     self.method_CONNECT(hostPort)
                 else:
                     self.method_CONNECT(hostPort)
             else:
-                print '- No X-Real-Host!'
-                self.client.send('HTTP/1.1 400 NoXRealHost!\r\n\r\n')
+                print('- No X-Real-Host!')
+                self.client.send(b'HTTP/1.1 400 NoXRealHost!\r\n\r\n')
 
         except Exception as e:
-            self.log += ' - error: ' + e.strerror
+            self.log += ' - error: ' + str(e)
             self.server.printLog(self.log)
             pass
         finally:
@@ -193,7 +200,7 @@ class ConnectionHandler(threading.Thread):
         self.log += ' - CONNECT ' + path
 
         self.connect_target(path)
-        self.client.sendall(RESPONSE)
+        self.client.sendall(RESPONSE.encode('utf-8'))
         self.client_buffer = ''
 
         self.server.printLog(self.log)
@@ -233,9 +240,9 @@ class ConnectionHandler(threading.Thread):
 
 
 def print_usage():
-    print 'Usage: proxy.py -p <port>'
-    print '       proxy.py -b <bindAddr> -p <port>'
-    print '       proxy.py -b 0.0.0.0 -p 8081'
+    print('Usage: proxy.py -p <port>')
+    print('       proxy.py -b <bindAddr> -p <port>')
+    print('       proxy.py -b 0.0.0.0 -p 8081')
 
 def parse_args(argv):
     global LISTENING_ADDR
@@ -257,17 +264,17 @@ def parse_args(argv):
 
 
 def main(host=LISTENING_ADDR, port=LISTENING_PORT):
-    print "\n:-------PythonProxy-------:\n"
-    print "Listening addr: " + LISTENING_ADDR
-    print "Listening port: " + str(LISTENING_PORT) + "\n"
-    print ":-------------------------:\n"
+    print("\n:-------PythonProxy-------:\n")
+    print("Listening addr: " + LISTENING_ADDR)
+    print("Listening port: " + str(LISTENING_PORT) + "\n")
+    print(":-------------------------:\n")
     server = Server(LISTENING_ADDR, LISTENING_PORT)
     server.start()
     while True:
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print 'Stopping...'
+            print('Stopping...')
             server.close()
             break
 
