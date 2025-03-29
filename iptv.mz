@@ -1,0 +1,7 @@
+{
+"version": 1.1,
+"Servidor Principal": "http://24.199.119.172:32770",
+"Vpn IP Local": "https://192.18.0.1:32270",
+"Alfa Tv": "https://alfatv.lat:2082",
+"Otro":""
+}
